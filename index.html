@@ -3,8 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solar OS — Stop Paying for 6 Tools. Start Closing in One.</title>
-  <meta name="description" content="The all-in-one solar platform for US installers. CRM, AI proposals, design, permitting & monitoring — from $49/user/mo.">
+  <title>Solar OS — All-in-One Platform for Solar Installers | $49/mo</title>
+  <meta name="description" content="Stop paying for 6 tools. CRM, proposals, design, permits & monitoring in one platform. Built for Florida solar installers.">
+  <link rel="canonical" href="https://usasolaros.com/">
+
+  <!-- Favicon (orange sun SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://usasolaros.com/">
+  <meta property="og:title" content="Solar OS — All-in-One Platform for Solar Installers | $49/mo">
+  <meta property="og:description" content="Stop paying for 6 tools. CRM, proposals, design, permits & monitoring in one platform. Built for Florida solar installers.">
+  <meta property="og:image" content="https://usasolaros.com/og-image.png">
+  <meta property="og:site_name" content="Solar OS">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solar OS — All-in-One Platform for Solar Installers | $49/mo">
+  <meta name="twitter:description" content="Stop paying for 6 tools. CRM, proposals, design, permits & monitoring in one platform. Built for Florida solar installers.">
+  <meta name="twitter:image" content="https://usasolaros.com/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Solar OS",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://usasolaros.com",
+    "description": "All-in-one solar platform for US installers. CRM, AI proposals, battery + solar design, permit generation, and fleet monitoring.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "49",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "unitText": "per user per month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "99",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "unitText": "per user per month"
+      }
+    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "Kaniel Tord LLC",
+      "url": "https://kanielt.com"
+    }
+  }
+  </script>
+
+  <!-- PostHog Analytics -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_PLACEHOLDER',{api_host:'https://us.i.posthog.com', person_profiles: 'identified_only'});
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","CLARITY_PLACEHOLDER");
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -67,7 +143,7 @@
           <span class="text-slate-600">|</span>
           <a href="es/index.html" class="px-2 py-1 text-slate-400 hover:text-white transition rounded text-xs font-semibold">ES</a>
         </div>
-        <a href="#cta" class="bg-solar-500 hover:bg-solar-600 text-slate-950 font-semibold px-5 py-2.5 rounded-lg transition">Get Early Access</a>
+        <a href="#cta" data-ph="nav-get-early-access" class="bg-solar-500 hover:bg-solar-600 text-slate-950 font-semibold px-5 py-2.5 rounded-lg transition">Get Early Access</a>
       </div>
     </div>
   </nav>
@@ -90,10 +166,10 @@
           CRM, AI proposals, battery+solar design, permit generation, and monitoring — all in one platform built for US solar installers. Starting at <strong class="text-white">$49/user/mo</strong>.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#cta" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg transition-all shadow-lg shadow-solar-500/25 hover:shadow-solar-500/40">
+          <a href="#cta" data-ph="hero-start-free-trial" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg transition-all shadow-lg shadow-solar-500/25 hover:shadow-solar-500/40">
             Start Free Trial →
           </a>
-          <a href="#features" class="border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium px-8 py-4 rounded-xl text-lg transition">
+          <a href="#features" data-ph="hero-see-how-it-works" class="border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium px-8 py-4 rounded-xl text-lg transition">
             See How It Works
           </a>
         </div>
@@ -358,9 +434,9 @@
           </div>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Join 50+ Florida Installers Testing Solar OS</h2>
           <p class="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">Be among the first to try the all-in-one solar platform that replaces Aurora, PandaDoc, SolarAPP+, and more — at a fraction of the cost.</p>
-          <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-6" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ You\'re on the list!'; this.querySelector('button').disabled=true;">
+          <form data-ph="beta-signup-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-6" onsubmit="event.preventDefault(); posthog.capture('beta_signup_submitted', {source: 'mid-page'}); this.querySelector('button').textContent='✓ You\'re on the list!'; this.querySelector('button').disabled=true;">
             <input type="email" required placeholder="you@solarcompany.com" class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-solar-500 transition">
-            <button type="submit" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition whitespace-nowrap shadow-lg shadow-solar-500/25">Join the Beta</button>
+            <button type="submit" data-ph="beta-join-button" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition whitespace-nowrap shadow-lg shadow-solar-500/25">Join the Beta</button>
           </form>
           <p class="text-sm text-slate-500 mb-8">Free plan available · No credit card required · Cancel anytime</p>
           <div class="border-t border-slate-700 pt-8">
@@ -397,7 +473,7 @@
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>5 AI proposals/mo</li>
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Basic design tool</li>
           </ul>
-          <a href="#cta" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Get Started</a>
+          <a href="#cta" data-ph="pricing-free-get-started" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Get Started</a>
         </div>
         <!-- Pro -->
         <div class="pricing-popular bg-slate-900 rounded-2xl p-8 flex flex-col glow">
@@ -412,7 +488,7 @@
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Permit generator (50/mo)</li>
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Mobile site survey</li>
           </ul>
-          <a href="#cta" class="block text-center bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold py-3 rounded-xl transition">Start Free Trial</a>
+          <a href="#cta" data-ph="pricing-pro-start-trial" class="block text-center bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold py-3 rounded-xl transition">Start Free Trial</a>
         </div>
         <!-- Business -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col">
@@ -427,7 +503,7 @@
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>API access</li>
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Priority support</li>
           </ul>
-          <a href="#cta" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Start Free Trial</a>
+          <a href="#cta" data-ph="pricing-business-start-trial" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Start Free Trial</a>
         </div>
         <!-- Enterprise -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col">
@@ -442,7 +518,7 @@
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Custom integrations</li>
             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>SLA &amp; on-prem available</li>
           </ul>
-          <a href="#cta" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Contact Sales</a>
+          <a href="#cta" data-ph="pricing-enterprise-contact" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Contact Sales</a>
         </div>
       </div>
     </div>
@@ -515,9 +591,9 @@
     <div class="relative max-w-2xl mx-auto text-center fade-in">
       <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Ready to simplify your solar business?</h2>
       <p class="text-slate-400 text-lg mb-10">Join 50+ Florida installers already testing Solar OS. Get early access today.</p>
-      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ You\'re on the list!'; this.querySelector('button').disabled=true;">
+      <form data-ph="cta-signup-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); posthog.capture('early_access_submitted', {source: 'footer-cta'}); this.querySelector('button').textContent='✓ You\'re on the list!'; this.querySelector('button').disabled=true;">
         <input type="email" required placeholder="you@solarcompany.com" class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-solar-500 transition">
-        <button type="submit" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition whitespace-nowrap shadow-lg shadow-solar-500/25">Get Early Access</button>
+        <button type="submit" data-ph="cta-get-early-access" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition whitespace-nowrap shadow-lg shadow-solar-500/25">Get Early Access</button>
       </form>
       <p class="text-sm text-slate-500 mt-4">Free plan available · No credit card required · Cancel anytime</p>
     </div>
