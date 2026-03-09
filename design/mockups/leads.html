@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar OS — Lead Management</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: { solar: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' } }, fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+}
+</script>
+<style>body{font-family:'Inter',system-ui,sans-serif}.font-mono{font-family:'JetBrains Mono',monospace}</style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+<div class="flex min-h-screen">
+
+  <!-- Sidebar (same as dashboard — abbreviated) -->
+  <aside class="hidden lg:flex w-64 flex-col bg-slate-900 border-r border-slate-800 p-4 fixed h-full">
+    <div class="flex items-center gap-3 px-3 py-4 mb-6">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-solar-500 to-orange-600 flex items-center justify-center">
+        <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </div>
+      <div><p class="font-bold text-white text-lg leading-tight">Solar OS</p><p class="text-xs text-slate-500">by Kaniel Tord</p></div>
+    </div>
+    <nav class="flex-1 space-y-1">
+      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard</a>
+      <a href="leads.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-solar-500/10 text-solar-400 border-r-2 border-solar-500 font-medium text-sm">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Leads</a>
+      <a href="proposals.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        Proposals</a>
+      <a href="monitoring.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        Monitoring</a>
+    </nav>
+  </aside>
+
+  <main class="flex-1 lg:ml-64">
+    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800 px-6 py-4">
+      <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-white">Lead Management</h1>
+          <p class="text-sm text-slate-400">Track and convert your solar leads</p>
+        </div>
+        <button class="bg-solar-500 hover:bg-solar-400 text-slate-950 font-semibold rounded-lg px-5 py-2.5 text-sm transition-colors flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Add Lead
+        </button>
+      </div>
+    </header>
+
+    <div class="p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Filters -->
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="flex gap-1 bg-slate-900 border border-slate-800 rounded-lg p-1">
+          <button class="px-3 py-1.5 text-xs font-medium rounded-md bg-solar-500 text-slate-950">All (68)</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-400 hover:text-white">New (28)</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-400 hover:text-white">Contacted (18)</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-400 hover:text-white">Qualified (14)</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-400 hover:text-white">Won (8)</button>
+        </div>
+        <div class="flex-1"></div>
+        <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-solar-500">
+          <option>All States</option><option>California</option><option>Texas</option><option>Florida</option><option>New York</option>
+        </select>
+        <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-solar-500">
+          <option>All Sources</option><option>Google Ads</option><option>Referral</option><option>Website</option><option>Door-to-door</option>
+        </select>
+      </div>
+
+      <!-- Lead Cards (Kanban-style for larger screens, list for mobile) -->
+      <!-- Desktop: Kanban -->
+      <div class="hidden md:grid grid-cols-4 gap-4">
+        <!-- New -->
+        <div>
+          <div class="flex items-center gap-2 mb-3 px-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+            <h3 class="text-sm font-semibold text-white">New</h3>
+            <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">28</span>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">David Park</p>
+                <span class="text-xs text-slate-500">2h ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Los Angeles, CA • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Referral</span>
+                <span class="text-xs text-slate-500 font-mono">~$32K</span>
+              </div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Sarah Mitchell</p>
+                <span class="text-xs text-slate-500">5h ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Houston, TX • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full">Google Ads</span>
+                <span class="text-xs text-slate-500 font-mono">~$28K</span>
+              </div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Mike Johnson</p>
+                <span class="text-xs text-slate-500">1d ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Tampa, FL • Commercial</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-full">Website</span>
+                <span class="text-xs text-slate-500 font-mono">~$85K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contacted -->
+        <div>
+          <div class="flex items-center gap-2 mb-3 px-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+            <h3 class="text-sm font-semibold text-white">Contacted</h3>
+            <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">18</span>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Jennifer Lee</p>
+                <span class="text-xs text-slate-500">3h ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">San Jose, CA • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Referral</span>
+                <span class="text-xs text-slate-500 font-mono">~$41K</span>
+              </div>
+              <div class="mt-3 pt-3 border-t border-slate-800">
+                <p class="text-xs text-slate-500">📞 Call scheduled — Tomorrow 2pm</p>
+              </div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Tom Bradley</p>
+                <span class="text-xs text-slate-500">1d ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Dallas, TX • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded-full">Door-to-door</span>
+                <span class="text-xs text-slate-500 font-mono">~$25K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Qualified -->
+        <div>
+          <div class="flex items-center gap-2 mb-3 px-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-solar-500"></div>
+            <h3 class="text-sm font-semibold text-white">Qualified</h3>
+            <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">14</span>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Maria Garcia</p>
+                <span class="text-xs text-slate-500">6h ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">San Diego, CA • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Referral</span>
+                <span class="text-xs text-slate-500 font-mono">~$38K</span>
+              </div>
+              <div class="mt-3 pt-3 border-t border-slate-800">
+                <p class="text-xs text-slate-500">✅ Site survey completed</p>
+              </div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Kevin Williams</p>
+                <span class="text-xs text-slate-500">2d ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Brooklyn, NY • Commercial</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full">Google Ads</span>
+                <span class="text-xs text-slate-500 font-mono">~$120K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Won -->
+        <div>
+          <div class="flex items-center gap-2 mb-3 px-1">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+            <h3 class="text-sm font-semibold text-white">Won</h3>
+            <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">8</span>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group border-l-2 border-l-green-500">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Robert Chen</p>
+                <span class="text-xs text-slate-500">1d ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Austin, TX • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Signed</span>
+                <span class="text-xs text-green-400 font-mono font-bold">$34,200</span>
+              </div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition-colors cursor-pointer group border-l-2 border-l-green-500">
+              <div class="flex items-start justify-between mb-2">
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Lisa Thompson</p>
+                <span class="text-xs text-slate-500">3d ago</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-3">Miami, FL • Residential</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Signed</span>
+                <span class="text-xs text-green-400 font-mono font-bold">$45,800</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile: List view -->
+      <div class="md:hidden space-y-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <p class="text-sm font-medium text-white">David Park</p>
+              <p class="text-xs text-slate-400">Los Angeles, CA • Residential</p>
+            </div>
+            <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full">New</span>
+          </div>
+          <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-800">
+            <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Referral</span>
+            <span class="text-xs text-slate-500 font-mono">~$32K • 2h ago</span>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <p class="text-sm font-medium text-white">Jennifer Lee</p>
+              <p class="text-xs text-slate-400">San Jose, CA • Residential</p>
+            </div>
+            <span class="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded-full">Contacted</span>
+          </div>
+          <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-800">
+            <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">Referral</span>
+            <span class="text-xs text-slate-500 font-mono">~$41K • 3h ago</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>

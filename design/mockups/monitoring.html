@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar OS — Fleet Monitoring</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: { solar: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' } }, fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] } } }
+}
+</script>
+<style>
+body{font-family:'Inter',system-ui,sans-serif}.font-mono{font-family:'JetBrains Mono',monospace}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+.pulse-dot{animation:pulse-dot 2s ease-in-out infinite}
+</style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="hidden lg:flex w-64 flex-col bg-slate-900 border-r border-slate-800 p-4 fixed h-full">
+    <div class="flex items-center gap-3 px-3 py-4 mb-6">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-solar-500 to-orange-600 flex items-center justify-center">
+        <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </div>
+      <div><p class="font-bold text-white text-lg leading-tight">Solar OS</p><p class="text-xs text-slate-500">by Kaniel Tord</p></div>
+    </div>
+    <nav class="flex-1 space-y-1">
+      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard</a>
+      <a href="leads.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        Leads</a>
+      <a href="proposals.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        Proposals</a>
+      <a href="monitoring.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-solar-500/10 text-solar-400 border-r-2 border-solar-500 font-medium text-sm">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        Monitoring</a>
+    </nav>
+  </aside>
+
+  <main class="flex-1 lg:ml-64">
+    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800 px-6 py-4">
+      <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-white">Fleet Monitoring</h1>
+          <p class="text-sm text-slate-400">Real-time performance across all installations</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 text-sm">
+            <div class="w-2 h-2 rounded-full bg-green-500 pulse-dot"></div>
+            <span class="text-green-400">Live</span>
+          </div>
+          <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-solar-500">
+            <option>Today</option><option>Last 7 days</option><option>Last 30 days</option><option>This Year</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <div class="p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Fleet stats -->
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+          <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Total Fleet</p>
+          <p class="text-3xl font-bold text-white font-mono">127</p>
+          <p class="text-xs text-slate-400">systems</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+          <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Online</p>
+          <p class="text-3xl font-bold text-green-400 font-mono">124</p>
+          <p class="text-xs text-green-400/60">97.6% uptime</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+          <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Alerts</p>
+          <p class="text-3xl font-bold text-red-400 font-mono">3</p>
+          <p class="text-xs text-red-400/60">needs attention</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
+          <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">Today's Output</p>
+          <p class="text-3xl font-bold text-solar-400 font-mono">1.82</p>
+          <p class="text-xs text-slate-400">MWh total</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center col-span-2 lg:col-span-1">
+          <p class="text-xs text-slate-500 uppercase tracking-wider mb-2">CO₂ Avoided</p>
+          <p class="text-3xl font-bold text-emerald-400 font-mono">1.4</p>
+          <p class="text-xs text-slate-400">tons today</p>
+        </div>
+      </div>
+
+      <!-- Live Production Chart -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="text-lg font-semibold text-white">Fleet Production — Today</h3>
+            <p class="text-sm text-slate-400">Aggregate output across all systems</p>
+          </div>
+          <div class="flex items-center gap-4 text-sm">
+            <div class="flex items-center gap-2"><div class="w-3 h-1 rounded bg-solar-500"></div><span class="text-slate-400">Production</span></div>
+            <div class="flex items-center gap-2"><div class="w-3 h-1 rounded bg-blue-500"></div><span class="text-slate-400">Consumption</span></div>
+          </div>
+        </div>
+        <!-- Simulated area chart via bars -->
+        <div class="relative h-48">
+          <div class="absolute inset-0 flex items-end">
+            <!-- Simulated production curve -->
+            <svg class="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="prodGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="consGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Production area -->
+              <path d="M0,50 L5,48 L10,44 L15,38 L20,30 L25,22 L30,15 L35,10 L40,7 L45,5 L50,4 L55,5 L60,7 L65,11 L70,17 L75,25 L80,34 L85,42 L90,47 L95,49 L100,50 Z" fill="url(#prodGrad)"/>
+              <path d="M0,50 L5,48 L10,44 L15,38 L20,30 L25,22 L30,15 L35,10 L40,7 L45,5 L50,4 L55,5 L60,7 L65,11 L70,17 L75,25 L80,34 L85,42 L90,47 L95,49 L100,50" fill="none" stroke="#F59E0B" stroke-width="0.5"/>
+              <!-- Consumption line -->
+              <path d="M0,35 L10,36 L20,34 L30,33 L40,35 L50,34 L60,33 L70,35 L80,34 L90,36 L100,35" fill="url(#consGrad)" stroke="#3B82F6" stroke-width="0.5"/>
+              <!-- Current time indicator -->
+              <line x1="70" y1="0" x2="70" y2="50" stroke="#F59E0B" stroke-width="0.3" stroke-dasharray="1,1"/>
+              <circle cx="70" cy="17" r="1" fill="#F59E0B"/>
+            </svg>
+          </div>
+          <!-- X-axis labels -->
+          <div class="absolute bottom-0 left-0 right-0 flex justify-between px-2 -mb-6">
+            <span class="text-[10px] text-slate-600">6AM</span>
+            <span class="text-[10px] text-slate-600">9AM</span>
+            <span class="text-[10px] text-slate-600">12PM</span>
+            <span class="text-[10px] text-slate-500 font-medium">3PM ←now</span>
+            <span class="text-[10px] text-slate-600">6PM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Systems Grid -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold text-white">System Status</h3>
+          <div class="flex gap-2">
+            <button class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-400 hover:text-white border border-slate-700">
+              <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Grid
+            </button>
+            <button class="px-3 py-1.5 text-xs font-medium rounded-lg text-slate-500 hover:text-white">
+              <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>List
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          <!-- System Card: Healthy -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all cursor-pointer group">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Garcia Residence</p>
+                <p class="text-xs text-slate-500">San Diego, CA • 12.4 kW</p>
+              </div>
+              <span class="flex items-center gap-1 text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></div>Online
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-lg font-bold text-white font-mono">8.2</p>
+                <p class="text-[10px] text-slate-500">kW now</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white font-mono">42.1</p>
+                <p class="text-[10px] text-slate-500">kWh today</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-green-400 font-mono">98%</p>
+                <p class="text-[10px] text-slate-500">efficiency</p>
+              </div>
+            </div>
+            <!-- Mini sparkline -->
+            <div class="mt-3 pt-3 border-t border-slate-800">
+              <svg class="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,18 L10,16 L20,12 L30,8 L40,5 L50,3 L60,4 L70,6 L80,10 L90,15 L100,18" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- System Card: Healthy -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all cursor-pointer group">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Chen Residence</p>
+                <p class="text-xs text-slate-500">Austin, TX • 8.8 kW</p>
+              </div>
+              <span class="flex items-center gap-1 text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></div>Online
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-lg font-bold text-white font-mono">6.1</p>
+                <p class="text-[10px] text-slate-500">kW now</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white font-mono">31.8</p>
+                <p class="text-[10px] text-slate-500">kWh today</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-green-400 font-mono">95%</p>
+                <p class="text-[10px] text-slate-500">efficiency</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-slate-800">
+              <svg class="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,18 L10,15 L20,11 L30,7 L40,4 L50,3 L60,4 L70,7 L80,12 L90,16 L100,18" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- System Card: ALERT -->
+          <div class="bg-slate-900 border border-red-500/30 rounded-xl p-5 hover:border-red-500/50 transition-all cursor-pointer group">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="text-sm font-medium text-white group-hover:text-red-400 transition-colors">142 Oak Street</p>
+                <p class="text-xs text-slate-500">Fresno, CA • 10.2 kW</p>
+              </div>
+              <span class="flex items-center gap-1 text-xs bg-red-500/10 text-red-400 px-2 py-0.5 rounded-full">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>Offline
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-lg font-bold text-red-400 font-mono">0.0</p>
+                <p class="text-[10px] text-slate-500">kW now</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-slate-500 font-mono">12.4</p>
+                <p class="text-[10px] text-slate-500">kWh today</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-red-400 font-mono">0%</p>
+                <p class="text-[10px] text-slate-500">efficiency</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-red-500/20">
+              <div class="flex items-center gap-2 text-xs text-red-400">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+                Inverter comm lost — 2h 14m ago
+              </div>
+            </div>
+          </div>
+
+          <!-- System Card: Warning -->
+          <div class="bg-slate-900 border border-yellow-500/20 rounded-xl p-5 hover:border-yellow-500/40 transition-all cursor-pointer group">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Thompson Residence</p>
+                <p class="text-xs text-slate-500">Miami, FL • 15.2 kW</p>
+              </div>
+              <span class="flex items-center gap-1 text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded-full">
+                <div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>Warning
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-lg font-bold text-white font-mono">9.8</p>
+                <p class="text-[10px] text-slate-500">kW now</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white font-mono">38.6</p>
+                <p class="text-[10px] text-slate-500">kWh today</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-yellow-400 font-mono">72%</p>
+                <p class="text-[10px] text-slate-500">efficiency</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-yellow-500/20">
+              <div class="flex items-center gap-2 text-xs text-yellow-400">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+                Panel string underperforming — possible shading
+              </div>
+            </div>
+          </div>
+
+          <!-- System Card: Healthy -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all cursor-pointer group">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Wilson Residence</p>
+                <p class="text-xs text-slate-500">Brooklyn, NY • 6.6 kW</p>
+              </div>
+              <span class="flex items-center gap-1 text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></div>Online
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-lg font-bold text-white font-mono">3.9</p>
+                <p class="text-[10px] text-slate-500">kW now</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white font-mono">18.2</p>
+                <p class="text-[10px] text-slate-500">kWh today</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-green-400 font-mono">94%</p>
+                <p class="text-[10px] text-slate-500">efficiency</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-slate-800">
+              <svg class="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,19 L10,17 L20,14 L30,10 L40,7 L50,5 L60,6 L70,9 L80,14 L90,17 L100,19" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- System Card: Healthy -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all cursor-pointer group">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="text-sm font-medium text-white group-hover:text-solar-400 transition-colors">Patel Commercial</p>
+                <p class="text-xs text-slate-500">Sacramento, CA • 48.0 kW</p>
+              </div>
+              <span class="flex items-center gap-1 text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot"></div>Online
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-lg font-bold text-white font-mono">34.2</p>
+                <p class="text-[10px] text-slate-500">kW now</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white font-mono">186</p>
+                <p class="text-[10px] text-slate-500">kWh today</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-green-400 font-mono">96%</p>
+                <p class="text-[10px] text-slate-500">efficiency</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-slate-800">
+              <svg class="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,18 L10,14 L20,9 L30,5 L40,3 L50,2 L60,3 L70,5 L80,9 L90,14 L100,18" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>

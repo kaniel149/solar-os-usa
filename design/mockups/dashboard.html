@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar OS — Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        solar: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace']
+      }
+    }
+  }
+}
+</script>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+  .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+  .chart-bar { transition: height 0.6s ease-out; }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+<!-- Layout -->
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="hidden lg:flex w-64 flex-col bg-slate-900 border-r border-slate-800 p-4 fixed h-full">
+    <!-- Logo -->
+    <div class="flex items-center gap-3 px-3 py-4 mb-6">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-solar-500 to-orange-600 flex items-center justify-center">
+        <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </div>
+      <div>
+        <p class="font-bold text-white text-lg leading-tight">Solar OS</p>
+        <p class="text-xs text-slate-500">by Kaniel Tord</p>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-1 space-y-1">
+      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-solar-500/10 text-solar-400 border-r-2 border-solar-500 font-medium text-sm">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="leads.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Leads
+      </a>
+      <a href="proposals.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        Proposals
+      </a>
+      <a href="monitoring.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        Monitoring
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+        Projects
+      </a>
+    </nav>
+
+    <!-- User -->
+    <div class="border-t border-slate-800 pt-4 mt-4">
+      <div class="flex items-center gap-3 px-3">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">JD</div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-white truncate">John Doe</p>
+          <p class="text-xs text-slate-500 truncate">SunPower West</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 lg:ml-64">
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800 px-6 py-4">
+      <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-white">Dashboard</h1>
+          <p class="text-sm text-slate-400">Welcome back, John. Here's your overview.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="relative hidden md:block">
+            <input type="text" placeholder="Search..." class="bg-slate-800 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-300 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-solar-500 focus:border-transparent w-64">
+            <svg class="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <button class="relative p-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Stat Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 animate-fade-in">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-solar-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-slate-400">Monthly Revenue</p>
+            <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">+12.5%</span>
+          </div>
+          <p class="text-3xl font-bold text-white font-mono">$284K</p>
+          <p class="text-xs text-slate-500 mt-1">vs $253K last month</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-blue-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-slate-400">Active Projects</p>
+            <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full">3 new</span>
+          </div>
+          <p class="text-3xl font-bold text-white font-mono">47</p>
+          <p class="text-xs text-slate-500 mt-1">12 in permitting, 8 installing</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-green-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-slate-400">Energy Generated</p>
+            <span class="text-xs bg-green-500/10 text-green-400 px-2 py-0.5 rounded-full">↑ 8.3%</span>
+          </div>
+          <p class="text-3xl font-bold text-white font-mono">1.82<span class="text-lg text-slate-400 ml-1">MWh</span></p>
+          <p class="text-xs text-slate-500 mt-1">Today's total fleet output</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-purple-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-slate-400">Conversion Rate</p>
+            <span class="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded-full">−2.1%</span>
+          </div>
+          <p class="text-3xl font-bold text-white font-mono">34.2<span class="text-lg text-slate-400 ml-1">%</span></p>
+          <p class="text-xs text-slate-500 mt-1">Lead to signed contract</p>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in animate-delay-1">
+        <!-- Revenue Chart -->
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-lg font-semibold text-white">Revenue Overview</h3>
+              <p class="text-sm text-slate-400">Monthly revenue & installations</p>
+            </div>
+            <div class="flex gap-1 bg-slate-800 rounded-lg p-1">
+              <button class="px-3 py-1 text-xs font-medium rounded-md bg-solar-500 text-slate-950">6M</button>
+              <button class="px-3 py-1 text-xs font-medium rounded-md text-slate-400 hover:text-white">1Y</button>
+              <button class="px-3 py-1 text-xs font-medium rounded-md text-slate-400 hover:text-white">ALL</button>
+            </div>
+          </div>
+          <!-- Simulated Chart -->
+          <div class="flex items-end gap-2 h-48">
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-solar-500/80 rounded-t-md chart-bar" style="height:60%"></div>
+              <span class="text-xs text-slate-500">Sep</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-solar-500/80 rounded-t-md chart-bar" style="height:45%"></div>
+              <span class="text-xs text-slate-500">Oct</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-solar-500/80 rounded-t-md chart-bar" style="height:70%"></div>
+              <span class="text-xs text-slate-500">Nov</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-solar-500/80 rounded-t-md chart-bar" style="height:55%"></div>
+              <span class="text-xs text-slate-500">Dec</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-solar-500/80 rounded-t-md chart-bar" style="height:85%"></div>
+              <span class="text-xs text-slate-500">Jan</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-gradient-to-t from-solar-500 to-solar-400 rounded-t-md chart-bar" style="height:95%"></div>
+              <span class="text-xs text-white font-medium">Feb</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pipeline -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Pipeline</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-400">New Leads</span><span class="text-white font-mono">28</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-2 bg-blue-500 rounded-full" style="width:70%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-400">Site Survey</span><span class="text-white font-mono">14</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-2 bg-purple-500 rounded-full" style="width:45%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-400">Proposal Sent</span><span class="text-white font-mono">9</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-2 bg-solar-500 rounded-full" style="width:30%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-400">Contract Signed</span><span class="text-white font-mono">6</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-2 bg-green-500 rounded-full" style="width:20%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-400">Installing</span><span class="text-white font-mono">4</span></div>
+              <div class="h-2 bg-slate-800 rounded-full"><div class="h-2 bg-emerald-400 rounded-full" style="width:13%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity + Alerts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in animate-delay-2">
+        <!-- Recent Projects -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+          <div class="flex items-center justify-between p-6 pb-4">
+            <h3 class="text-lg font-semibold text-white">Recent Projects</h3>
+            <a href="#" class="text-sm text-solar-400 hover:text-solar-300">View all →</a>
+          </div>
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-slate-800">
+                <th class="text-left text-xs text-slate-500 uppercase tracking-wider px-6 py-3 font-medium">Customer</th>
+                <th class="text-left text-xs text-slate-500 uppercase tracking-wider px-6 py-3 font-medium">System</th>
+                <th class="text-left text-xs text-slate-500 uppercase tracking-wider px-6 py-3 font-medium">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors">
+                <td class="px-6 py-3.5">
+                  <p class="text-sm font-medium text-white">Maria Garcia</p>
+                  <p class="text-xs text-slate-500">San Diego, CA</p>
+                </td>
+                <td class="px-6 py-3.5 text-sm text-slate-300 font-mono">12.4 kW</td>
+                <td class="px-6 py-3.5"><span class="text-xs bg-green-500/10 text-green-400 px-2.5 py-1 rounded-full">Active</span></td>
+              </tr>
+              <tr class="border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors">
+                <td class="px-6 py-3.5">
+                  <p class="text-sm font-medium text-white">Robert Chen</p>
+                  <p class="text-xs text-slate-500">Austin, TX</p>
+                </td>
+                <td class="px-6 py-3.5 text-sm text-slate-300 font-mono">8.8 kW</td>
+                <td class="px-6 py-3.5"><span class="text-xs bg-yellow-500/10 text-yellow-400 px-2.5 py-1 rounded-full">Permitting</span></td>
+              </tr>
+              <tr class="border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors">
+                <td class="px-6 py-3.5">
+                  <p class="text-sm font-medium text-white">Lisa Thompson</p>
+                  <p class="text-xs text-slate-500">Miami, FL</p>
+                </td>
+                <td class="px-6 py-3.5 text-sm text-slate-300 font-mono">15.2 kW</td>
+                <td class="px-6 py-3.5"><span class="text-xs bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-full">Installing</span></td>
+              </tr>
+              <tr class="hover:bg-slate-800/30 transition-colors">
+                <td class="px-6 py-3.5">
+                  <p class="text-sm font-medium text-white">James Wilson</p>
+                  <p class="text-xs text-slate-500">Brooklyn, NY</p>
+                </td>
+                <td class="px-6 py-3.5 text-sm text-slate-300 font-mono">6.6 kW</td>
+                <td class="px-6 py-3.5"><span class="text-xs bg-purple-500/10 text-purple-400 px-2.5 py-1 rounded-full">Survey</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Alerts -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Alerts & Notifications</h3>
+          <div class="space-y-3">
+            <div class="flex gap-3 p-3 bg-red-500/5 border border-red-500/20 rounded-lg">
+              <div class="w-2 h-2 mt-1.5 rounded-full bg-red-500 shrink-0"></div>
+              <div>
+                <p class="text-sm text-white">System offline: 142 Oak Street</p>
+                <p class="text-xs text-slate-500">Inverter communication lost — 2h ago</p>
+              </div>
+            </div>
+            <div class="flex gap-3 p-3 bg-yellow-500/5 border border-yellow-500/20 rounded-lg">
+              <div class="w-2 h-2 mt-1.5 rounded-full bg-yellow-500 shrink-0"></div>
+              <div>
+                <p class="text-sm text-white">Permit expiring: Garcia residence</p>
+                <p class="text-xs text-slate-500">NEM 3.0 deadline in 5 days</p>
+              </div>
+            </div>
+            <div class="flex gap-3 p-3 bg-blue-500/5 border border-blue-500/20 rounded-lg">
+              <div class="w-2 h-2 mt-1.5 rounded-full bg-blue-500 shrink-0"></div>
+              <div>
+                <p class="text-sm text-white">New lead assigned: David Park</p>
+                <p class="text-xs text-slate-500">Referral from existing customer — 30 min ago</p>
+              </div>
+            </div>
+            <div class="flex gap-3 p-3 bg-green-500/5 border border-green-500/20 rounded-lg">
+              <div class="w-2 h-2 mt-1.5 rounded-full bg-green-500 shrink-0"></div>
+              <div>
+                <p class="text-sm text-white">Inspection passed: Chen residence</p>
+                <p class="text-xs text-slate-500">Final city inspection approved — 1h ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Mobile bottom nav -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 flex justify-around py-2 z-20">
+  <a href="dashboard.html" class="flex flex-col items-center gap-0.5 text-solar-400 py-1 px-3">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span class="text-[10px] font-medium">Dashboard</span>
+  </a>
+  <a href="leads.html" class="flex flex-col items-center gap-0.5 text-slate-500 py-1 px-3">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    <span class="text-[10px]">Leads</span>
+  </a>
+  <a href="proposals.html" class="flex flex-col items-center gap-0.5 text-slate-500 py-1 px-3">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+    <span class="text-[10px]">Proposals</span>
+  </a>
+  <a href="monitoring.html" class="flex flex-col items-center gap-0.5 text-slate-500 py-1 px-3">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+    <span class="text-[10px]">Monitor</span>
+  </a>
+</nav>
+
+</body>
+</html>
