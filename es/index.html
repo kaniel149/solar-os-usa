@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar OS — Deja de pagar por 6 herramientas. Empieza a cerrar ventas con una sola.</title>
+  <meta name="description" content="La plataforma integral de energía solar para instaladores en EE.UU. CRM, propuestas con IA, diseño, permisos y monitoreo — desde $49/usuario/mes.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            solar: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' },
+            slate: { 200: '#E2E8F0', 400: '#94A3B8', 700: '#334155', 800: '#1E293B', 900: '#0F172A', 950: '#020617' }
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .gradient-text { background: linear-gradient(135deg, #F59E0B, #F97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); }
+    .glow { box-shadow: 0 0 60px rgba(245, 158, 11, 0.15); }
+    .pricing-popular { border: 2px solid #F59E0B; position: relative; }
+    .pricing-popular::before { content: 'Más Popular'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #F59E0B, #D97706); color: #020617; font-size: 0.75rem; font-weight: 700; padding: 4px 16px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-solar-500 to-orange-600 flex items-center justify-center">
+          <svg class="w-5 h-5 text-slate-950" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1.07A7.002 7.002 0 0116.93 10H18a1 1 0 110 2h-1.07A7.002 7.002 0 0111 17.93V19a1 1 0 11-2 0v-1.07A7.002 7.002 0 013.07 12H2a1 1 0 110-2h1.07A7.002 7.002 0 019 4.07V3a1 1 0 011-1zm0 4a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </div>
+        <span class="text-xl font-bold text-white">Solar OS</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+        <a href="#features" class="hover:text-white transition">Funciones</a>
+        <a href="#pricing" class="hover:text-white transition">Precios</a>
+        <a href="#faq" class="hover:text-white transition">Preguntas</a>
+        <div class="flex items-center gap-1 border border-slate-700 rounded-lg px-2 py-1">
+          <a href="../index.html" class="px-2 py-1 text-slate-400 hover:text-white transition rounded text-xs font-semibold">EN</a>
+          <span class="text-slate-600">|</span>
+          <a href="#" class="px-2 py-1 bg-solar-500/20 text-solar-400 rounded text-xs font-semibold">ES</a>
+        </div>
+        <a href="#cta" class="bg-solar-500 hover:bg-solar-600 text-slate-950 font-semibold px-5 py-2.5 rounded-lg transition">Acceso Anticipado</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-b from-solar-500/5 via-transparent to-transparent"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-solar-500/10 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-full px-4 py-1.5 text-sm text-slate-400 mb-8">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          Disponible en CA, TX, FL y NY
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tight mb-6">
+          Deja de pagar por 6 herramientas.<br>
+          <span class="gradient-text">Cierra ventas con una sola.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          CRM, propuestas con IA, diseño solar+batería, generación de permisos y monitoreo — todo en una plataforma creada para instaladores solares en EE.UU. Desde <strong class="text-white">$49/usuario/mes</strong>.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#cta" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg transition-all shadow-lg shadow-solar-500/25 hover:shadow-solar-500/40">
+            Prueba Gratis →
+          </a>
+          <a href="#features" class="border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium px-8 py-4 rounded-xl text-lg transition">
+            Descubre Cómo Funciona
+          </a>
+        </div>
+        <p class="text-sm text-slate-500 mt-5">Sin tarjeta de crédito · Plan gratuito disponible · Configuración en 5 minutos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-solar-500 font-semibold text-sm uppercase tracking-widest mb-3">El Problema</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">Tu stack actual está destruyendo tus márgenes</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 fade-in">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-red-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Aurora cuesta $170+/usuario/mes</h3>
+          <p class="text-slate-400 leading-relaxed">Precios de empresa para funciones de empresa que no necesitas. Tu equipo de 10 personas no necesita una herramienta de diseño de $20K/año.</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-red-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">6 herramientas, 6 logins, 6 facturas</h3>
+          <p class="text-slate-400 leading-relaxed">CRM en Salesforce, diseños en Aurora, propuestas en PandaDoc, permisos en SolarAPP+, monitoreo en Enphase. Nada se conecta entre sí.</p>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-red-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Los permisos son una pesadilla</h3>
+          <p class="text-slate-400 leading-relaxed">Cada jurisdicción tiene requisitos diferentes. Gastas 3-5 horas por paquete de permisos, y un rechazo te retrasa una semana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 px-6 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-solar-500 font-semibold text-sm uppercase tracking-widest mb-3">La Plataforma</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">Todo lo que necesitas.<br class="hidden md:block"> Nada que no.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="fade-in bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-solar-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-solar-500/10 flex items-center justify-center mb-5 group-hover:bg-solar-500/20 transition">
+            <svg class="w-6 h-6 text-solar-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">CRM Solar</h3>
+          <p class="text-slate-400 leading-relaxed">Lead → Venta → Diseño → Permiso → Instalación → PTO. Diseñado para flujos de trabajo solares, no ventas genéricas. Integraciones con EnergySage y Angi incluidas.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="fade-in bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-solar-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover:bg-blue-500/20 transition">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Propuestas con IA</h3>
+          <p class="text-slate-400 leading-relaxed">Dirección + factura de luz → propuesta profesional en 60 segundos. ITC 30%, comparaciones efectivo/préstamo/leasing/PPA, firma electrónica incluida.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="fade-in bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-solar-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-5 group-hover:bg-green-500/20 transition">
+            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Diseño Solar + Batería</h3>
+          <p class="text-slate-400 leading-relaxed">Diseñador agnóstico de hardware con conocimiento de NEM 3.0. Enphase, SolarEdge, Tesla Powerwall — elige lo que tu cliente necesita.</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="fade-in bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-solar-500/30 transition group relative overflow-hidden">
+          <div class="absolute top-4 right-4 bg-solar-500 text-slate-950 text-xs font-bold px-2.5 py-1 rounded-full">★ FUNCIÓN ESTRELLA</div>
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5 group-hover:bg-purple-500/20 transition">
+            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Generador de Permisos AHJ</h3>
+          <p class="text-slate-400 leading-relaxed">Genera paquetes de permisos automáticamente por jurisdicción. Integración con SolarAPP+. Lo que tomaba 3-5 horas ahora toma 10 minutos.</p>
+        </div>
+        <!-- Feature 5 -->
+        <div class="fade-in bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-solar-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Monitoreo de Flota</h3>
+          <p class="text-slate-400 leading-relaxed">Supervisa cada sistema instalado desde un solo panel. Alertas en tiempo real, seguimiento de producción y flujos de O&M para mantener clientes satisfechos.</p>
+        </div>
+        <!-- Feature 6 -->
+        <div class="fade-in bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-solar-500/30 transition group">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-5 group-hover:bg-orange-500/20 transition">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Inspección Móvil</h3>
+          <p class="text-slate-400 leading-relaxed">Mediciones de techo, documentación fotográfica y análisis de sombras — todo desde tu teléfono. Los datos se sincronizan al instante con el proyecto en tu CRM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-solar-500 font-semibold text-sm uppercase tracking-widest mb-3">Confianza de Instaladores</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">No nos creas a nosotros</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 fade-in">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-slate-300 leading-relaxed mb-6">"Dejamos Aurora y otras dos herramientas. Solar OS nos ahorró $1,400/mes y nuestro tiempo de permisos pasó de 5 días a el mismo día."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-solar-500 to-orange-600 flex items-center justify-center text-slate-950 font-bold text-sm">MR</div>
+            <div>
+              <p class="text-white font-semibold text-sm">Mike Rodriguez</p>
+              <p class="text-slate-500 text-sm">SunPeak Solar · San Diego, CA</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-slate-300 leading-relaxed mb-6">"Solo el generador de permisos vale la suscripción. Pasamos de temer el papeleo AHJ a generar paquetes en minutos. Un cambio total para nuestras operaciones en Texas."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm">SJ</div>
+            <div>
+              <p class="text-white font-semibold text-sm">Sarah Johnson</p>
+              <p class="text-slate-500 text-sm">Lone Star Solar Co. · Austin, TX</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-solar-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-slate-300 leading-relaxed mb-6">"Mis vendedores cierran un 30% más de ventas desde que cambiamos. Las propuestas con IA lucen increíbles y a los clientes les encanta la rapidez. Vale cada centavo."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">DW</div>
+            <div>
+              <p class="text-white font-semibold text-sm">David Williams</p>
+              <p class="text-slate-500 text-sm">Sunshine State Energy · Miami, FL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 px-6 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-solar-500 font-semibold text-sm uppercase tracking-widest mb-3">Precios Simples</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Menos que tu suscripción a Aurora</h2>
+        <p class="text-slate-400 text-lg">Sin costos ocultos. Sin contratos anuales. Cancela cuando quieras.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+        <!-- Gratis -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col">
+          <h3 class="text-lg font-bold text-white mb-1">Gratis</h3>
+          <p class="text-slate-500 text-sm mb-6">Pruébalo sin compromiso</p>
+          <div class="mb-6"><span class="text-4xl font-black text-white">$0</span><span class="text-slate-500">/mes</span></div>
+          <ul class="space-y-3 text-sm text-slate-400 mb-8 flex-1">
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>1 usuario</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>CRM básico (25 leads)</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>5 propuestas IA/mes</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Herramienta de diseño básica</li>
+          </ul>
+          <a href="#cta" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Comenzar</a>
+        </div>
+        <!-- Pro -->
+        <div class="pricing-popular bg-slate-900 rounded-2xl p-8 flex flex-col glow">
+          <h3 class="text-lg font-bold text-white mb-1">Pro</h3>
+          <p class="text-slate-500 text-sm mb-6">Para instaladores en crecimiento</p>
+          <div class="mb-6"><span class="text-4xl font-black text-white">$49</span><span class="text-slate-500">/usuario/mes</span></div>
+          <ul class="space-y-3 text-sm text-slate-400 mb-8 flex-1">
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Hasta 10 usuarios</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Leads ilimitados en CRM</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Propuestas IA ilimitadas</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Diseño solar + batería</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Generador de permisos (50/mes)</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Inspección móvil</li>
+          </ul>
+          <a href="#cta" class="block text-center bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold py-3 rounded-xl transition">Prueba Gratis</a>
+        </div>
+        <!-- Business -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col">
+          <h3 class="text-lg font-bold text-white mb-1">Business</h3>
+          <p class="text-slate-500 text-sm mb-6">Para equipos establecidos</p>
+          <div class="mb-6"><span class="text-4xl font-black text-white">$99</span><span class="text-slate-500">/usuario/mes</span></div>
+          <ul class="space-y-3 text-sm text-slate-400 mb-8 flex-1">
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Hasta 50 usuarios</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Todo lo de Pro</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Permisos ilimitados</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Panel de monitoreo de flota</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Acceso API</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Soporte prioritario</li>
+          </ul>
+          <a href="#cta" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Prueba Gratis</a>
+        </div>
+        <!-- Enterprise -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col">
+          <h3 class="text-lg font-bold text-white mb-1">Enterprise</h3>
+          <p class="text-slate-500 text-sm mb-6">Para grandes operaciones</p>
+          <div class="mb-6"><span class="text-4xl font-black text-white">Personalizado</span></div>
+          <ul class="space-y-3 text-sm text-slate-400 mb-8 flex-1">
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Usuarios ilimitados</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Todo lo de Business</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Opción de marca blanca</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Gerente de cuenta dedicado</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Integraciones personalizadas</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>SLA y opción on-prem</li>
+          </ul>
+          <a href="#cta" class="block text-center border border-slate-700 hover:border-slate-500 text-white font-semibold py-3 rounded-xl transition">Contactar Ventas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-solar-500 font-semibold text-sm uppercase tracking-widest mb-3">Preguntas Frecuentes</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">Preguntas comunes</h2>
+      </div>
+      <div class="space-y-4 fade-in">
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl" open>
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿En qué se diferencia Solar OS de Aurora Solar?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Aurora es una herramienta de diseño con precios de empresa ($170+/usuario/mes). Solar OS es una plataforma integral — CRM, propuestas, diseño, permisos y monitoreo — creada específicamente para instaladores pequeños y medianos a una fracción del costo. Reemplazas 5-6 herramientas con una sola.</p>
+        </details>
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿En qué estados están disponibles?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Estamos lanzando en California, Texas, Florida y Nueva York con bases de datos completas de permisos AHJ y estructuras tarifarias específicas por estado. Nos expandiremos a los 50 estados durante 2026.</p>
+        </details>
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿Cómo funciona el generador de propuestas con IA?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Ingresa la dirección de la propiedad y sube una factura de luz. Nuestra IA dimensiona el sistema automáticamente, calcula los ahorros ITC (incluyendo bonificaciones adicionales), genera comparaciones de efectivo/préstamo/leasing/PPA, y produce una propuesta PDF con tu marca y firma electrónica — todo en unos 60 segundos.</p>
+        </details>
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿Maneja NEM 3.0 y almacenamiento con baterías?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Sí. Solar OS reconoce NEM 3.0 para proyectos en California. Optimiza automáticamente el tamaño de la batería según las tarifas TOU e incluye Tesla Powerwall, Enphase IQ y otras opciones de batería en propuestas y diseños.</p>
+        </details>
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿Qué marcas de equipos soportan?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Somos agnósticos de hardware. Nuestra base de datos incluye Enphase, SolarEdge, Tesla, REC, Q CELLS, Canadian Solar, Silfab y más. También puedes agregar equipos y precios personalizados.</p>
+        </details>
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿Puedo migrar mis datos de otras herramientas?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Por supuesto. Ofrecemos migración gratuita desde Salesforce, HubSpot, Aurora y la mayoría de los CRMs comunes. Nuestro equipo te ayudará a configurar todo — la mayoría de los instaladores están completamente migrados en 48 horas.</p>
+        </details>
+        <details class="group bg-slate-900 border border-slate-800 rounded-2xl">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-white font-semibold">
+            ¿Hay contrato o puedo cancelar en cualquier momento?
+            <svg class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-slate-400 leading-relaxed">Sin contratos. Todos los planes son mes a mes y puedes cancelar cuando quieras. También ofrecemos 14 días de prueba gratis en todos los planes de pago para que pruebes todo antes de comprometerte.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Footer -->
+  <section id="cta" class="py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-solar-500/10 via-transparent to-transparent"></div>
+    <div class="relative max-w-2xl mx-auto text-center fade-in">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">¿Listo para simplificar tu negocio solar?</h2>
+      <p class="text-slate-400 text-lg mb-10">Únete a cientos de instaladores en EE.UU. que están cerrando más ventas con menos gastos. Obtén acceso anticipado hoy.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ ¡Estás en la lista!'; this.querySelector('button').disabled=true;">
+        <input type="email" required placeholder="tu@empresasolar.com" class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-solar-500 transition">
+        <button type="submit" class="bg-gradient-to-r from-solar-500 to-orange-600 hover:from-solar-400 hover:to-orange-500 text-slate-950 font-bold px-8 py-4 rounded-xl transition whitespace-nowrap shadow-lg shadow-solar-500/25">Acceso Anticipado</button>
+      </form>
+      <p class="text-sm text-slate-500 mt-4">Plan gratuito disponible · Sin tarjeta de crédito · Cancela cuando quieras</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-gradient-to-br from-solar-500 to-orange-600 flex items-center justify-center">
+          <svg class="w-4 h-4 text-slate-950" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1.07A7.002 7.002 0 0116.93 10H18a1 1 0 110 2h-1.07A7.002 7.002 0 0111 17.93V19a1 1 0 11-2 0v-1.07A7.002 7.002 0 013.07 12H2a1 1 0 110-2h1.07A7.002 7.002 0 019 4.07V3a1 1 0 011-1zm0 4a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </div>
+        <span class="font-bold text-white">Solar OS</span>
+        <span class="text-slate-600 text-sm ml-2">por Kaniel Tord LLC</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-slate-500">
+        <a href="#" class="hover:text-white transition">Privacidad</a>
+        <a href="#" class="hover:text-white transition">Términos</a>
+        <a href="#" class="hover:text-white transition">Contacto</a>
+        <span>© 2026 Solar OS</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll animation -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
