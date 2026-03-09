@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar OS — Instagram Post Template (1080x1080)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .canvas {
+      width: 1080px;
+      height: 1080px;
+      background: #1B2E4A;
+      font-family: 'DM Sans', sans-serif;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px;
+    }
+    /* Background elements */
+    .glow-top {
+      position: absolute;
+      top: -200px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245,166,35,0.2) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+    .glow-bottom {
+      position: absolute;
+      bottom: -200px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .top-section {
+      position: relative;
+      z-index: 1;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      background: #F5A623;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.01em;
+    }
+    .headline {
+      font-size: 64px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .headline .gold {
+      color: #F5A623;
+    }
+    .bottom-section {
+      position: relative;
+      z-index: 1;
+    }
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat-value {
+      font-size: 48px;
+      font-weight: 700;
+      color: #F5A623;
+    }
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #F5A623;
+      color: #1B2E4A;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 12px;
+    }
+    .accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #F5A623, #3B82F6);
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="glow-top"></div>
+    <div class="glow-bottom"></div>
+    <div class="grid-bg"></div>
+    
+    <div class="top-section">
+      <div class="logo-row">
+        <div class="logo-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <span class="logo-text">Solar OS</span>
+      </div>
+      <div class="headline">
+        Stop paying<br>
+        for <span class="gold">6 tools</span>.<br>
+        Start closing<br>
+        in <span class="gold">one</span>.
+      </div>
+    </div>
+
+    <div class="bottom-section">
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-value">60%</span>
+          <span class="stat-label">lower software costs</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">3x</span>
+          <span class="stat-label">faster proposals</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">50%</span>
+          <span class="stat-label">faster permits</span>
+        </div>
+      </div>
+      <div class="cta">
+        Try Free for 14 Days →
+      </div>
+    </div>
+
+    <div class="accent-line"></div>
+  </div>
+</body>
+</html>

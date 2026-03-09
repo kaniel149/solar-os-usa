@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar OS — LinkedIn Banner (1584x396)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .canvas {
+      width: 1584px;
+      height: 396px;
+      background: linear-gradient(110deg, #1B2E4A 0%, #0F172A 55%, #1a2744 100%);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 80px;
+    }
+    .sun-glow {
+      position: absolute;
+      top: -120px;
+      right: 100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245,166,35,0.2) 0%, rgba(245,166,35,0.05) 40%, transparent 70%);
+      border-radius: 50%;
+    }
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      background: #F5A623;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-text {
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+    .headline {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+    }
+    .headline .gold { color: #F5A623; }
+    .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 400;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+    .feature .dot {
+      width: 8px;
+      height: 8px;
+      background: #F5A623;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="sun-glow"></div>
+    <div class="grid-pattern"></div>
+    <div class="content">
+      <div class="left">
+        <div class="logo-row">
+          <div class="logo-mark">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <span class="logo-text">Solar OS</span>
+        </div>
+        <div class="headline">
+          The all-in-one platform for<br>
+          <span class="gold">solar installers</span>
+        </div>
+        <div class="sub">CRM · Proposals · Permitting · Monitoring</div>
+      </div>
+      <div class="right">
+        <div class="features">
+          <div class="feature"><span class="dot"></span> Close deals 3x faster</div>
+          <div class="feature"><span class="dot"></span> Cut permit time by 50%</div>
+          <div class="feature"><span class="dot"></span> One platform, one price</div>
+          <div class="feature"><span class="dot"></span> Built for Florida solar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

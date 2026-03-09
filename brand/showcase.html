@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar OS — Brand Component Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT:'#1B2E4A',50:'#E8EDF4',100:'#D1DBE9',500:'#1B2E4A',600:'#17273F',700:'#131F34',800:'#0F1829',900:'#0B101E' },
+            sunshine: { DEFAULT:'#F5A623',50:'#FEF7E8',100:'#FDEFD1',300:'#F9CF75',400:'#F7BF47',500:'#F5A623',600:'#E09610',700:'#CC8508' },
+            sky: { DEFAULT:'#3B82F6',50:'#EFF6FF',100:'#DBEAFE',400:'#60A5FA',500:'#3B82F6',600:'#2563EB',700:'#1D4ED8' },
+            palm: { DEFAULT:'#16A34A',50:'#F0FDF4',100:'#DCFCE7',400:'#4ADE80',500:'#22C55E',600:'#16A34A',700:'#15803D' },
+            surface: { DEFAULT:'#FFFFFF',50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CBD5E1',400:'#94A3B8',500:'#64748B',600:'#475569',700:'#334155',800:'#1E293B',900:'#0F172A' },
+          },
+          fontFamily: {
+            display: ['DM Sans', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          borderRadius: { sm:'4px', DEFAULT:'6px', md:'8px', lg:'12px', xl:'16px', '2xl':'20px' },
+          boxShadow: {
+            xs: '0 1px 2px rgba(0,0,0,0.05)',
+            sm: '0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)',
+            md: '0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06)',
+            lg: '0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)',
+            xl: '0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04)',
+            glow: '0 0 20px rgba(245,166,35,0.3)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    .section-anchor { scroll-margin-top: 80px; }
+    /* Custom toggle switch */
+    .toggle-track { width: 44px; height: 24px; border-radius: 12px; transition: background 200ms; }
+    .toggle-track .toggle-thumb { width: 20px; height: 20px; border-radius: 50%; transition: transform 200ms; }
+    /* skeleton shimmer */
+    .skeleton { background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%); background-size: 200% 100%; animation: shimmer 2s linear infinite; }
+    .dark .skeleton { background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%); background-size: 200% 100%; }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+  </style>
+</head>
+<body class="bg-white dark:bg-surface-900 text-surface-800 dark:text-surface-100 font-sans transition-colors duration-300">
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <nav class="sticky top-0 z-50 bg-navy dark:bg-surface-900 border-b border-navy-700 dark:border-surface-700 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <!-- Logo mark -->
+        <div class="w-9 h-9 rounded-lg bg-sunshine flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-white text-lg tracking-tight">Solar OS</span>
+        <span class="hidden sm:inline text-xs font-medium text-sunshine bg-sunshine/10 px-2 py-0.5 rounded-full ml-1">Brand Showcase</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-sm text-white/70">
+        <a href="#colors" class="hover:text-white transition-colors">Colors</a>
+        <a href="#typography" class="hover:text-white transition-colors">Type</a>
+        <a href="#buttons" class="hover:text-white transition-colors">Buttons</a>
+        <a href="#cards" class="hover:text-white transition-colors">Cards</a>
+        <a href="#forms" class="hover:text-white transition-colors">Forms</a>
+        <a href="#components" class="hover:text-white transition-colors">Components</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <!-- Dark mode toggle -->
+        <button id="themeToggle" class="relative flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-md text-sm transition-all" aria-label="Toggle dark mode">
+          <svg id="sunIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="moonIcon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span id="themeLabel">Dark</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="text-center py-12">
+      <p class="text-sm font-semibold tracking-widest uppercase text-sunshine mb-4">Brand Identity System</p>
+      <h1 class="font-display text-5xl md:text-6xl font-bold text-navy dark:text-white leading-tight mb-6">Solar OS <span class="text-sunshine">USA</span></h1>
+      <p class="text-lg text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">Complete component showcase and design system. Every element below is production-ready and implements the Solar OS brand guidelines.</p>
+    </section>
+
+    <!-- ═══ COLORS ═══ -->
+    <section id="colors" class="section-anchor space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Foundation</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Color Palette</h2>
+      </div>
+
+      <!-- Primary -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Primary</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div class="space-y-2">
+            <div class="h-24 rounded-xl bg-navy shadow-sm flex items-end p-3"><span class="text-xs font-mono text-white/80">Solar Navy</span></div>
+            <p class="text-xs font-mono text-surface-500">#1B2E4A</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-24 rounded-xl bg-sunshine shadow-sm flex items-end p-3"><span class="text-xs font-mono text-navy/80">Sunshine Gold</span></div>
+            <p class="text-xs font-mono text-surface-500">#F5A623</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-24 rounded-xl bg-sky shadow-sm flex items-end p-3"><span class="text-xs font-mono text-white/80">Sky Blue</span></div>
+            <p class="text-xs font-mono text-surface-500">#3B82F6</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-24 rounded-xl bg-palm shadow-sm flex items-end p-3"><span class="text-xs font-mono text-white/80">Palm Green</span></div>
+            <p class="text-xs font-mono text-surface-500">#16A34A</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-24 rounded-xl bg-surface-500 shadow-sm flex items-end p-3"><span class="text-xs font-mono text-white/80">Slate</span></div>
+            <p class="text-xs font-mono text-surface-500">#64748B</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semantic -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Semantic</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="rounded-xl border border-surface-200 dark:border-surface-700 overflow-hidden">
+            <div class="h-16 bg-palm"></div>
+            <div class="p-3 bg-palm-50 dark:bg-palm-600/10">
+              <p class="text-sm font-medium text-palm-700 dark:text-palm-400">Success</p>
+              <p class="text-xs font-mono text-surface-400">#16A34A</p>
+            </div>
+          </div>
+          <div class="rounded-xl border border-surface-200 dark:border-surface-700 overflow-hidden">
+            <div class="h-16 bg-yellow-500"></div>
+            <div class="p-3 bg-yellow-50 dark:bg-yellow-600/10">
+              <p class="text-sm font-medium text-yellow-700 dark:text-yellow-400">Warning</p>
+              <p class="text-xs font-mono text-surface-400">#EAB308</p>
+            </div>
+          </div>
+          <div class="rounded-xl border border-surface-200 dark:border-surface-700 overflow-hidden">
+            <div class="h-16 bg-red-600"></div>
+            <div class="p-3 bg-red-50 dark:bg-red-600/10">
+              <p class="text-sm font-medium text-red-700 dark:text-red-400">Error</p>
+              <p class="text-xs font-mono text-surface-400">#DC2626</p>
+            </div>
+          </div>
+          <div class="rounded-xl border border-surface-200 dark:border-surface-700 overflow-hidden">
+            <div class="h-16 bg-sky"></div>
+            <div class="p-3 bg-sky-50 dark:bg-sky-600/10">
+              <p class="text-sm font-medium text-sky-700 dark:text-sky-400">Info</p>
+              <p class="text-xs font-mono text-surface-400">#3B82F6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Neutral Scale -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Neutral Scale</h3>
+        <div class="flex gap-0 rounded-xl overflow-hidden shadow-sm border border-surface-200 dark:border-surface-700">
+          <div class="flex-1 h-16 bg-white" title="#FFFFFF"></div>
+          <div class="flex-1 h-16 bg-surface-50" title="#F8FAFC"></div>
+          <div class="flex-1 h-16 bg-surface-100" title="#F1F5F9"></div>
+          <div class="flex-1 h-16 bg-surface-200" title="#E2E8F0"></div>
+          <div class="flex-1 h-16 bg-surface-300" title="#CBD5E1"></div>
+          <div class="flex-1 h-16 bg-surface-400" title="#94A3B8"></div>
+          <div class="flex-1 h-16 bg-surface-500" title="#64748B"></div>
+          <div class="flex-1 h-16 bg-surface-600" title="#475569"></div>
+          <div class="flex-1 h-16 bg-surface-700" title="#334155"></div>
+          <div class="flex-1 h-16 bg-surface-800" title="#1E293B"></div>
+          <div class="flex-1 h-16 bg-surface-900" title="#0F172A"></div>
+        </div>
+        <div class="flex gap-0 mt-1">
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">50</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">100</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">150</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">200</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">300</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">400</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">500</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">600</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">700</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">800</div>
+          <div class="flex-1 text-center text-[10px] font-mono text-surface-400">900</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TYPOGRAPHY ═══ -->
+    <section id="typography" class="section-anchor space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Foundation</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Typography</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Headings -->
+        <div class="space-y-6 p-8 bg-surface-50 dark:bg-surface-800 rounded-xl border border-surface-200 dark:border-surface-700">
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-surface-400">Headings — DM Sans + Inter</h4>
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Display — 48px / DM Sans Bold</p>
+              <p class="font-display text-5xl font-bold text-navy dark:text-white leading-tight">Solar OS</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">H1 — 36px / DM Sans Bold</p>
+              <p class="font-display text-4xl font-bold text-navy dark:text-white">Page Title</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">H2 — 30px / DM Sans Bold</p>
+              <p class="font-display text-3xl font-bold text-navy dark:text-white">Section Header</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">H3 — 24px / Inter Semibold</p>
+              <p class="text-2xl font-semibold text-navy dark:text-white">Sub-section</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">H4 — 20px / Inter Semibold</p>
+              <p class="text-xl font-semibold text-navy dark:text-white">Card Title</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">H5 — 16px / Inter Semibold</p>
+              <p class="text-base font-semibold text-navy dark:text-white">Group Label</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">H6 — 14px / Inter Semibold</p>
+              <p class="text-sm font-semibold text-navy dark:text-white">Small Label</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="space-y-6 p-8 bg-surface-50 dark:bg-surface-800 rounded-xl border border-surface-200 dark:border-surface-700">
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-surface-400">Body — Inter</h4>
+          <div class="space-y-5">
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Body — 16px / Regular</p>
+              <p class="text-base text-surface-600 dark:text-surface-300 leading-relaxed">Solar OS helps small-to-mid solar installers manage their entire business — from the first lead to the last monitoring alert. One platform, one price, no headaches.</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Body Small — 14px / Regular</p>
+              <p class="text-sm text-surface-600 dark:text-surface-300 leading-relaxed">Track permits, send proposals, manage your CRM, and monitor systems from a single dashboard designed for solar pros.</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Caption — 12px / Medium</p>
+              <p class="text-xs font-medium text-surface-500 dark:text-surface-400">Last updated 3 minutes ago · 24 active installs</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Overline — 12px / Semibold / Uppercase</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-surface-500 dark:text-surface-400">Project Status</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Monospace — JetBrains Mono</p>
+              <code class="font-mono text-sm bg-surface-100 dark:bg-surface-700 px-2 py-1 rounded text-sky dark:text-sky-400">api.solaros.com/v1/permits</code>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-surface-400 mb-1">Link</p>
+              <a href="#" class="text-sky hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-300 underline underline-offset-2 transition-colors">View all installations →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BUTTONS ═══ -->
+    <section id="buttons" class="section-anchor space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Interactive</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Buttons</h2>
+      </div>
+
+      <div class="space-y-8">
+        <!-- Primary -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Primary</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <button class="bg-sunshine hover:bg-sunshine-600 active:bg-sunshine-700 text-navy font-semibold text-sm px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-0 transition-all duration-150">Start Free Trial</button>
+            <button class="bg-sunshine hover:bg-sunshine-600 active:bg-sunshine-700 text-navy font-semibold text-xs px-3 py-1.5 rounded-md shadow-sm hover:shadow-md transition-all duration-150">Small</button>
+            <button class="bg-sunshine hover:bg-sunshine-600 active:bg-sunshine-700 text-navy font-semibold text-base px-7 py-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-px transition-all duration-150">Large Button</button>
+            <button class="bg-surface-300 dark:bg-surface-600 text-surface-400 dark:text-surface-500 font-semibold text-sm px-5 py-2.5 rounded-lg cursor-not-allowed" disabled>Disabled</button>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Secondary</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <button class="border-[1.5px] border-surface-200 dark:border-surface-600 hover:bg-surface-50 dark:hover:bg-surface-700 text-surface-800 dark:text-surface-100 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-150">View Details</button>
+            <button class="border-[1.5px] border-surface-200 dark:border-surface-600 hover:bg-surface-50 dark:hover:bg-surface-700 text-surface-800 dark:text-surface-100 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-150 flex items-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- Ghost -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Ghost</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <button class="text-sky hover:bg-sky-50 dark:hover:bg-sky-500/10 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-150">Learn More</button>
+            <button class="text-surface-500 hover:bg-surface-100 dark:hover:bg-surface-700 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-150">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Danger -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Danger</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <button class="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-sm transition-all duration-150">Delete Project</button>
+            <button class="border-[1.5px] border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-150">Remove</button>
+          </div>
+        </div>
+
+        <!-- Icon Buttons -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Icon Buttons</h3>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="w-10 h-10 rounded-lg bg-sunshine hover:bg-sunshine-600 text-navy flex items-center justify-center shadow-sm transition-all duration-150">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button class="w-10 h-10 rounded-lg border-[1.5px] border-surface-200 dark:border-surface-600 text-surface-600 dark:text-surface-300 hover:bg-surface-50 dark:hover:bg-surface-700 flex items-center justify-center transition-all duration-150">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="w-10 h-10 rounded-lg text-surface-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 flex items-center justify-center transition-all duration-150">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CARDS ═══ -->
+    <section id="cards" class="section-anchor space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Layout</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Cards</h2>
+      </div>
+
+      <!-- Stat Cards -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Stat Cards</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-surface-400 mb-1">Revenue (MTD)</p>
+            <p class="font-display text-3xl font-bold text-navy dark:text-white">$124,580</p>
+            <p class="text-xs font-medium text-palm mt-2 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+              +12.5% vs last month
+            </p>
+          </div>
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-surface-400 mb-1">Active Installs</p>
+            <p class="font-display text-3xl font-bold text-navy dark:text-white">47</p>
+            <p class="text-xs font-medium text-palm mt-2 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+              +8 this week
+            </p>
+          </div>
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-surface-400 mb-1">Pending Permits</p>
+            <p class="font-display text-3xl font-bold text-navy dark:text-white">12</p>
+            <p class="text-xs font-medium text-yellow-600 dark:text-yellow-400 mt-2 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              3 overdue
+            </p>
+          </div>
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-surface-400 mb-1">Conversion Rate</p>
+            <p class="font-display text-3xl font-bold text-navy dark:text-white">34.2%</p>
+            <p class="text-xs font-medium text-red-500 mt-2 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg>
+              -2.1% vs last month
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Cards -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Content Cards</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Feature card -->
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-sunshine/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-sunshine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h4 class="text-lg font-semibold text-navy dark:text-white mb-2">Smart Proposals</h4>
+            <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Generate professional solar proposals in under 5 minutes. Auto-calculates savings, system size, and ROI.</p>
+          </div>
+          <!-- Feature card -->
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-sky/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-sky" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h4 class="text-lg font-semibold text-navy dark:text-white mb-2">Permit Automation</h4>
+            <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Pre-filled Florida permit templates. Auto-submit to AHJs. Track status in real time.</p>
+          </div>
+          <!-- Feature card -->
+          <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-palm/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-palm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h4 class="text-lg font-semibold text-navy dark:text-white mb-2">System Monitoring</h4>
+            <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">Track every panel, every inverter, every kWh. Alerts when systems underperform.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive list card -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">List Card</h3>
+        <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl shadow-sm overflow-hidden">
+          <div class="px-6 py-4 border-b border-surface-200 dark:border-surface-700 flex items-center justify-between">
+            <h4 class="font-semibold text-navy dark:text-white">Recent Leads</h4>
+            <button class="text-sky hover:text-sky-600 dark:text-sky-400 text-sm font-medium transition-colors">View All</button>
+          </div>
+          <div class="divide-y divide-surface-100 dark:divide-surface-700">
+            <div class="px-6 py-3.5 flex items-center justify-between hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-sky/10 text-sky font-semibold text-sm flex items-center justify-center">JD</div>
+                <div>
+                  <p class="text-sm font-medium text-surface-800 dark:text-surface-100">John Doe</p>
+                  <p class="text-xs text-surface-400">Tampa, FL — 8.5 kW</p>
+                </div>
+              </div>
+              <span class="text-xs font-medium text-palm bg-palm/10 px-2.5 py-1 rounded-full">New</span>
+            </div>
+            <div class="px-6 py-3.5 flex items-center justify-between hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-sunshine/10 text-sunshine font-semibold text-sm flex items-center justify-center">SM</div>
+                <div>
+                  <p class="text-sm font-medium text-surface-800 dark:text-surface-100">Sarah Miller</p>
+                  <p class="text-xs text-surface-400">Orlando, FL — 12.4 kW</p>
+                </div>
+              </div>
+              <span class="text-xs font-medium text-sunshine bg-sunshine/10 px-2.5 py-1 rounded-full">Proposal Sent</span>
+            </div>
+            <div class="px-6 py-3.5 flex items-center justify-between hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-surface-200 dark:bg-surface-600 text-surface-500 dark:text-surface-300 font-semibold text-sm flex items-center justify-center">RJ</div>
+                <div>
+                  <p class="text-sm font-medium text-surface-800 dark:text-surface-100">Robert Johnson</p>
+                  <p class="text-xs text-surface-400">St. Petersburg, FL — 6.2 kW</p>
+                </div>
+              </div>
+              <span class="text-xs font-medium text-sky bg-sky/10 px-2.5 py-1 rounded-full">Site Visit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FORMS ═══ -->
+    <section id="forms" class="section-anchor space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Interactive</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Form Elements</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Inputs -->
+        <div class="space-y-6 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-8 shadow-sm">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400">Text Inputs</h3>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-1.5">Customer Name</label>
+            <input type="text" value="John Doe" class="w-full h-10 px-3 text-sm border-[1.5px] border-surface-200 dark:border-surface-600 bg-white dark:bg-surface-900 rounded-lg text-surface-800 dark:text-surface-100 focus:border-sky focus:ring-2 focus:ring-sky/20 outline-none transition-all placeholder:text-surface-400">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-1.5">Email <span class="text-red-500">*</span></label>
+            <input type="email" placeholder="john@example.com" class="w-full h-10 px-3 text-sm border-[1.5px] border-surface-200 dark:border-surface-600 bg-white dark:bg-surface-900 rounded-lg text-surface-800 dark:text-surface-100 focus:border-sky focus:ring-2 focus:ring-sky/20 outline-none transition-all placeholder:text-surface-400">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-1.5">System Size (kW)</label>
+            <input type="text" value="8.5" class="w-full h-10 px-3 text-sm border-[1.5px] border-red-400 bg-white dark:bg-surface-900 rounded-lg text-surface-800 dark:text-surface-100 ring-2 ring-red-500/20 outline-none placeholder:text-surface-400">
+            <p class="text-xs text-red-500 mt-1.5">System size must be at least 3 kW</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-1.5">Notes</label>
+            <textarea rows="3" placeholder="Additional notes about this project..." class="w-full px-3 py-2 text-sm border-[1.5px] border-surface-200 dark:border-surface-600 bg-white dark:bg-surface-900 rounded-lg text-surface-800 dark:text-surface-100 focus:border-sky focus:ring-2 focus:ring-sky/20 outline-none transition-all placeholder:text-surface-400 resize-none"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-400 mb-1.5">Disabled Field</label>
+            <input type="text" value="Auto-generated" disabled class="w-full h-10 px-3 text-sm border-[1.5px] border-surface-100 dark:border-surface-700 bg-surface-100 dark:bg-surface-900 rounded-lg text-surface-400 cursor-not-allowed">
+          </div>
+        </div>
+
+        <!-- Selects, Checkboxes, Toggles -->
+        <div class="space-y-6 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-8 shadow-sm">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400">Selection Controls</h3>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-1.5">Project Status</label>
+            <select class="w-full h-10 px-3 text-sm border-[1.5px] border-surface-200 dark:border-surface-600 bg-white dark:bg-surface-900 rounded-lg text-surface-800 dark:text-surface-100 focus:border-sky focus:ring-2 focus:ring-sky/20 outline-none transition-all appearance-none" style="background-image:url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2394A3B8%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22/%3E%3C/svg%3E');background-position:right 8px center;background-repeat:no-repeat;background-size:20px;padding-right:36px">
+              <option>New Lead</option>
+              <option>Site Visit Scheduled</option>
+              <option selected>Proposal Sent</option>
+              <option>Contract Signed</option>
+              <option>Permit Submitted</option>
+              <option>Installation</option>
+              <option>Inspection</option>
+              <option>PTO</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-3">Panel Type</label>
+            <div class="space-y-2.5">
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" checked class="w-[18px] h-[18px] rounded border-[1.5px] border-surface-300 text-sky focus:ring-sky/20 focus:ring-2 cursor-pointer accent-sky-500">
+                <span class="text-sm text-surface-600 dark:text-surface-300 group-hover:text-surface-800 dark:group-hover:text-surface-100 transition-colors">Monocrystalline</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" class="w-[18px] h-[18px] rounded border-[1.5px] border-surface-300 text-sky focus:ring-sky/20 focus:ring-2 cursor-pointer accent-sky-500">
+                <span class="text-sm text-surface-600 dark:text-surface-300 group-hover:text-surface-800 dark:group-hover:text-surface-100 transition-colors">Polycrystalline</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" class="w-[18px] h-[18px] rounded border-[1.5px] border-surface-300 text-sky focus:ring-sky/20 focus:ring-2 cursor-pointer accent-sky-500">
+                <span class="text-sm text-surface-600 dark:text-surface-300 group-hover:text-surface-800 dark:group-hover:text-surface-100 transition-colors">Thin Film</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-3">Inverter Type</label>
+            <div class="space-y-2.5">
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="inverter" checked class="w-[18px] h-[18px] border-[1.5px] border-surface-300 text-sky focus:ring-sky/20 focus:ring-2 cursor-pointer accent-sky-500">
+                <span class="text-sm text-surface-600 dark:text-surface-300">String Inverter</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="inverter" class="w-[18px] h-[18px] border-[1.5px] border-surface-300 text-sky focus:ring-sky/20 focus:ring-2 cursor-pointer accent-sky-500">
+                <span class="text-sm text-surface-600 dark:text-surface-300">Microinverter</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="radio" name="inverter" class="w-[18px] h-[18px] border-[1.5px] border-surface-300 text-sky focus:ring-sky/20 focus:ring-2 cursor-pointer accent-sky-500">
+                <span class="text-sm text-surface-600 dark:text-surface-300">Power Optimizer</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-surface-700 dark:text-surface-200 mb-3">Toggles</label>
+            <div class="space-y-3">
+              <label class="flex items-center justify-between cursor-pointer">
+                <span class="text-sm text-surface-600 dark:text-surface-300">Email notifications</span>
+                <button type="button" role="switch" aria-checked="true" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked')==='true'?'false':'true')" class="toggle-track bg-sky flex items-center p-0.5 aria-[checked=false]:bg-surface-300 dark:aria-[checked=false]:bg-surface-600">
+                  <span class="toggle-thumb bg-white shadow-sm translate-x-5 [[aria-checked=false]_&]:translate-x-0"></span>
+                </button>
+              </label>
+              <label class="flex items-center justify-between cursor-pointer">
+                <span class="text-sm text-surface-600 dark:text-surface-300">SMS alerts</span>
+                <button type="button" role="switch" aria-checked="false" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked')==='true'?'false':'true')" class="toggle-track bg-surface-300 dark:bg-surface-600 flex items-center p-0.5 aria-[checked=true]:bg-sky">
+                  <span class="toggle-thumb bg-white shadow-sm [[aria-checked=true]_&]:translate-x-5"></span>
+                </button>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COMPONENTS ═══ -->
+    <section id="components" class="section-anchor space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Components</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Badges, Alerts, Tables</h2>
+      </div>
+
+      <!-- Badges -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Badges & Tags</h3>
+        <div class="flex flex-wrap gap-3">
+          <span class="text-xs font-medium text-palm bg-palm/10 px-2.5 py-1 rounded-full">Active</span>
+          <span class="text-xs font-medium text-sunshine-700 dark:text-sunshine bg-sunshine/10 px-2.5 py-1 rounded-full">Pending</span>
+          <span class="text-xs font-medium text-sky bg-sky/10 px-2.5 py-1 rounded-full">In Progress</span>
+          <span class="text-xs font-medium text-red-600 dark:text-red-400 bg-red-500/10 px-2.5 py-1 rounded-full">Overdue</span>
+          <span class="text-xs font-medium text-surface-600 dark:text-surface-300 bg-surface-200 dark:bg-surface-700 px-2.5 py-1 rounded-full">Draft</span>
+          <span class="text-xs font-medium text-navy dark:text-white bg-navy/10 dark:bg-white/10 px-2.5 py-1 rounded-full">Residential</span>
+          <span class="text-xs font-medium text-white bg-navy px-2.5 py-1 rounded-full">Commercial</span>
+          <span class="text-xs font-medium text-navy bg-sunshine px-2.5 py-1 rounded-full">New</span>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Alerts</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 bg-palm-50 dark:bg-palm/5 border border-palm/20 rounded-lg p-4">
+            <svg class="w-5 h-5 text-palm flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+              <p class="text-sm font-medium text-palm-700 dark:text-palm-400">Permit Approved</p>
+              <p class="text-xs text-palm-700/70 dark:text-palm-400/70 mt-0.5">Building permit for 123 Main St has been approved by Hillsborough County.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 bg-yellow-50 dark:bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-4">
+            <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div>
+              <p class="text-sm font-medium text-yellow-700 dark:text-yellow-400">Permit Revision Needed</p>
+              <p class="text-xs text-yellow-700/70 dark:text-yellow-400/70 mt-0.5">Pinellas County requires updated electrical line diagram for permit #PC-2024-1847.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 bg-red-50 dark:bg-red-500/5 border border-red-500/20 rounded-lg p-4">
+            <svg class="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div>
+              <p class="text-sm font-medium text-red-700 dark:text-red-400">Interconnection Rejected</p>
+              <p class="text-xs text-red-700/70 dark:text-red-400/70 mt-0.5">FPL rejected interconnection for system at 456 Oak Ave. Reason: transformer capacity exceeded.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 bg-sky-50 dark:bg-sky/5 border border-sky/20 rounded-lg p-4">
+            <svg class="w-5 h-5 text-sky flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>
+              <p class="text-sm font-medium text-sky-700 dark:text-sky-400">New Feature Available</p>
+              <p class="text-xs text-sky-700/70 dark:text-sky-400/70 mt-0.5">Automated FPL interconnection submission is now available. <a href="#" class="underline">Learn more →</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Table</h3>
+        <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-900/50">
+                  <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wider text-surface-400">Project</th>
+                  <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wider text-surface-400">Customer</th>
+                  <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wider text-surface-400">System</th>
+                  <th class="text-left px-6 py-3 text-xs font-semibold uppercase tracking-wider text-surface-400">Status</th>
+                  <th class="text-right px-6 py-3 text-xs font-semibold uppercase tracking-wider text-surface-400">Value</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-surface-100 dark:divide-surface-700">
+                <tr class="hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+                  <td class="px-6 py-3.5 font-medium text-surface-800 dark:text-surface-100">#SOL-2024-047</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">Maria Garcia</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">10.2 kW / REC Alpha</td>
+                  <td class="px-6 py-3.5"><span class="text-xs font-medium text-palm bg-palm/10 px-2.5 py-1 rounded-full">Installed</span></td>
+                  <td class="px-6 py-3.5 text-right font-medium text-surface-800 dark:text-surface-100">$28,400</td>
+                </tr>
+                <tr class="hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+                  <td class="px-6 py-3.5 font-medium text-surface-800 dark:text-surface-100">#SOL-2024-048</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">James Wilson</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">7.8 kW / Q.PEAK DUO</td>
+                  <td class="px-6 py-3.5"><span class="text-xs font-medium text-sunshine-700 dark:text-sunshine bg-sunshine/10 px-2.5 py-1 rounded-full">Permitting</span></td>
+                  <td class="px-6 py-3.5 text-right font-medium text-surface-800 dark:text-surface-100">$21,600</td>
+                </tr>
+                <tr class="hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+                  <td class="px-6 py-3.5 font-medium text-surface-800 dark:text-surface-100">#SOL-2024-049</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">David & Lisa Chen</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">14.6 kW / LG NeON</td>
+                  <td class="px-6 py-3.5"><span class="text-xs font-medium text-sky bg-sky/10 px-2.5 py-1 rounded-full">Proposal Sent</span></td>
+                  <td class="px-6 py-3.5 text-right font-medium text-surface-800 dark:text-surface-100">$38,200</td>
+                </tr>
+                <tr class="hover:bg-surface-50 dark:hover:bg-surface-700/50 transition-colors">
+                  <td class="px-6 py-3.5 font-medium text-surface-800 dark:text-surface-100">#SOL-2024-050</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">Thomas Brown</td>
+                  <td class="px-6 py-3.5 text-surface-600 dark:text-surface-300">6.4 kW / Canadian Solar</td>
+                  <td class="px-6 py-3.5"><span class="text-xs font-medium text-red-600 dark:text-red-400 bg-red-500/10 px-2.5 py-1 rounded-full">On Hold</span></td>
+                  <td class="px-6 py-3.5 text-right font-medium text-surface-800 dark:text-surface-100">$17,800</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skeleton Loading -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-surface-400 mb-4">Loading States</h3>
+        <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-6 shadow-sm space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full skeleton"></div>
+            <div class="space-y-2 flex-1">
+              <div class="h-4 w-1/3 rounded skeleton"></div>
+              <div class="h-3 w-1/2 rounded skeleton"></div>
+            </div>
+          </div>
+          <div class="h-4 w-full rounded skeleton"></div>
+          <div class="h-4 w-5/6 rounded skeleton"></div>
+          <div class="h-4 w-2/3 rounded skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ NAV SAMPLE ═══ -->
+    <section class="space-y-8">
+      <div>
+        <p class="text-overline uppercase tracking-widest text-sunshine font-semibold text-xs mb-2">Layout</p>
+        <h2 class="font-display text-3xl font-bold text-navy dark:text-white">Navigation Sample</h2>
+      </div>
+
+      <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl shadow-sm overflow-hidden">
+        <!-- Sample sidebar + content -->
+        <div class="flex min-h-[400px]">
+          <!-- Sidebar -->
+          <div class="w-56 bg-navy dark:bg-surface-900 border-r border-navy-700 dark:border-surface-700 p-4 flex-shrink-0">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="w-7 h-7 rounded bg-sunshine flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </div>
+              <span class="font-display font-bold text-white text-sm">Solar OS</span>
+            </div>
+            <nav class="space-y-1">
+              <a href="#" class="flex items-center gap-2.5 px-3 py-2 rounded-md bg-white/10 text-white text-sm font-medium">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Dashboard
+              </a>
+              <a href="#" class="flex items-center gap-2.5 px-3 py-2 rounded-md text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Leads
+              </a>
+              <a href="#" class="flex items-center gap-2.5 px-3 py-2 rounded-md text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Proposals
+              </a>
+              <a href="#" class="flex items-center gap-2.5 px-3 py-2 rounded-md text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Permits
+                <span class="ml-auto bg-sunshine text-navy text-xs font-bold px-1.5 py-0.5 rounded">12</span>
+              </a>
+              <a href="#" class="flex items-center gap-2.5 px-3 py-2 rounded-md text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Monitoring
+              </a>
+              <a href="#" class="flex items-center gap-2.5 px-3 py-2 rounded-md text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                Settings
+              </a>
+            </nav>
+          </div>
+
+          <!-- Content area -->
+          <div class="flex-1 p-6 bg-surface-50 dark:bg-surface-900">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h3 class="font-display text-xl font-bold text-navy dark:text-white">Dashboard</h3>
+                <p class="text-sm text-surface-400 mt-0.5">Welcome back, Jake. Here's your overview.</p>
+              </div>
+              <button class="bg-sunshine hover:bg-sunshine-600 text-navy font-semibold text-sm px-4 py-2 rounded-lg shadow-sm transition-all duration-150 flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                New Lead
+              </button>
+            </div>
+            <!-- Mini stat cards -->
+            <div class="grid grid-cols-3 gap-4">
+              <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-lg p-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-surface-400">This Month</p>
+                <p class="font-display text-2xl font-bold text-navy dark:text-white mt-1">$87.4K</p>
+                <p class="text-xs text-palm font-medium mt-1">+22%</p>
+              </div>
+              <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-lg p-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-surface-400">Active Jobs</p>
+                <p class="font-display text-2xl font-bold text-navy dark:text-white mt-1">23</p>
+                <p class="text-xs text-sky font-medium mt-1">5 this week</p>
+              </div>
+              <div class="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-lg p-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-surface-400">Close Rate</p>
+                <p class="font-display text-2xl font-bold text-navy dark:text-white mt-1">34%</p>
+                <p class="text-xs text-sunshine font-medium mt-1">Industry avg: 22%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="border-t border-surface-200 dark:border-surface-700 pt-12 pb-8 text-center">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded bg-sunshine flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <span class="font-display font-bold text-navy dark:text-white">Solar OS</span>
+      </div>
+      <p class="text-sm text-surface-400">Brand Identity System v1.0 — KANIEL TORD LLC</p>
+      <p class="text-xs text-surface-300 dark:text-surface-600 mt-1">Stop paying for 6 tools. Start closing in one.</p>
+    </footer>
+
+  </main>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function setTheme(dark) {
+      html.classList.toggle('dark', dark);
+      sunIcon.classList.toggle('hidden', dark);
+      moonIcon.classList.toggle('hidden', !dark);
+      themeLabel.textContent = dark ? 'Light' : 'Dark';
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+
+    toggle.addEventListener('click', () => {
+      setTheme(!html.classList.contains('dark'));
+    });
+
+    // Init from preference
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setTheme(true);
+    }
+  </script>
+</body>
+</html>

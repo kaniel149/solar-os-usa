@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar OS — Facebook Cover (820x312)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .canvas {
+      width: 820px;
+      height: 312px;
+      background: linear-gradient(120deg, #1B2E4A 0%, #0F172A 50%, #1a2d48 100%);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 60px;
+    }
+    .glow {
+      position: absolute;
+      top: -100px;
+      right: 50px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(245,166,35,0.18) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: #F5A623;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.01em;
+    }
+    .headline {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.25;
+    }
+    .headline .gold { color: #F5A623; }
+    .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    .pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.08);
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .pill .gold { color: #F5A623; font-weight: 700; }
+    .accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #F5A623, #3B82F6);
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="glow"></div>
+    <div class="grid-bg"></div>
+    <div class="content">
+      <div class="left">
+        <div class="logo-row">
+          <div class="logo-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <span class="logo-text">Solar OS</span>
+        </div>
+        <div class="headline">
+          The all-in-one platform<br>
+          for <span class="gold">solar installers</span>
+        </div>
+        <div class="sub">CRM · Proposals · Permitting · Monitoring</div>
+      </div>
+      <div class="right">
+        <div class="pill"><span class="gold">60%</span> lower software costs</div>
+        <div class="pill"><span class="gold">3x</span> faster proposals</div>
+        <div class="pill"><span class="gold">50%</span> faster permits</div>
+      </div>
+    </div>
+    <div class="accent-line"></div>
+  </div>
+</body>
+</html>

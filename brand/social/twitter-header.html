@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar OS — Twitter/X Header (1500x500)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .canvas {
+      width: 1500px;
+      height: 500px;
+      background: linear-gradient(135deg, #1B2E4A 0%, #0F172A 60%, #1B2E4A 100%);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative sun rays */
+    .rays {
+      position: absolute;
+      top: -200px;
+      right: -100px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .rays-2 {
+      position: absolute;
+      bottom: -300px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    /* Grid pattern */
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding: 0 100px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-mark {
+      width: 64px;
+      height: 64px;
+      background: #F5A623;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-text {
+      font-size: 42px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+    .divider {
+      width: 2px;
+      height: 80px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 1px;
+    }
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      line-height: 1.5;
+    }
+    .tagline strong {
+      color: #F5A623;
+      font-weight: 600;
+    }
+    .url {
+      position: absolute;
+      bottom: 30px;
+      right: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="rays"></div>
+    <div class="rays-2"></div>
+    <div class="grid-pattern"></div>
+    <div class="content">
+      <div class="logo-area">
+        <div class="logo-mark">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <span class="logo-text">Solar OS</span>
+      </div>
+      <div class="divider"></div>
+      <div class="tagline">
+        Stop paying for <strong>6 tools</strong>.<br>
+        Start closing in <strong>one</strong>.
+      </div>
+    </div>
+    <div class="url">solaros.com</div>
+  </div>
+</body>
+</html>
