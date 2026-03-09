@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar OS USA — Brand Identity</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2E4A;
+    --navy-light: #243B5C;
+    --navy-dark: #0F172A;
+    --gold: #F5A623;
+    --gold-hover: #E09610;
+    --gold-bright: #FBBF24;
+    --sky: #3B82F6;
+    --palm: #22C55E;
+    --slate: #64748B;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-300: #CBD5E1;
+    --gray-400: #94A3B8;
+    --gray-700: #334155;
+    --gray-800: #1E293B;
+    --error: #DC2626;
+    --warning: #EAB308;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy-dark);
+    color: var(--gray-100);
+    overflow: hidden;
+  }
+
+  .presentation {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  section {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  section.active { display: flex; }
+
+  /* Slide layouts */
+  .slide-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    height: 100%;
+  }
+
+  .two-col-wide {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* Typography */
+  h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  p, li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray-300);
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+  }
+
+  .gold { color: var(--gold); }
+  .sky { color: var(--sky); }
+  .palm { color: var(--palm); }
+
+  /* Slide image */
+  .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+
+  .slide-img-sm {
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-top: 16px;
+  }
+
+  /* Background decorations */
+  .bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-glow.top-right { top: -200px; right: -200px; }
+  .bg-glow.bottom-left { bottom: -200px; left: -200px; }
+
+  .bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(245,166,35,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Components */
+  .tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.15);
+    color: var(--gold);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .card {
+    background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 12px;
+  }
+
+  .card-gold {
+    background: rgba(245,166,35,0.08);
+    border: 1px solid rgba(245,166,35,0.2);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 20px;
+    background: var(--navy-light);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .stat-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+
+  /* Color swatches */
+  .swatch-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .swatch {
+    width: 100px;
+    text-align: center;
+  }
+
+  .swatch-color {
+    width: 100px;
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 2px solid rgba(255,255,255,0.1);
+  }
+
+  .swatch-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    color: var(--gray-400);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Lists */
+  ul { list-style: none; padding: 0; }
+  ul li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  ul li::before {
+    content: '▸';
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Table */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  .comp-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--navy-dark);
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: var(--gray-300);
+  }
+
+  .comp-table tr:hover td {
+    background: rgba(245,166,35,0.03);
+  }
+
+  .check { color: var(--palm); font-weight: 700; }
+  .cross { color: var(--error); }
+  .warn { color: var(--warning); }
+
+  /* Pricing cards */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .price-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .price-card.featured {
+    border-color: var(--gold);
+    background: rgba(245,166,35,0.06);
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(245,166,35,0.1);
+  }
+
+  .price-card .price {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 12px 0 4px;
+  }
+
+  .price-card .period {
+    font-size: 13px;
+    color: var(--gray-400);
+    margin-bottom: 16px;
+  }
+
+  .price-card .plan-name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .price-card ul {
+    text-align: left;
+    margin-top: 12px;
+  }
+
+  .price-card ul li {
+    font-size: 13px;
+    padding: 4px 0 4px 16px;
+    color: var(--gray-300);
+  }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 100;
+    background: rgba(15,23,42,0.8);
+    backdrop-filter: blur(12px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav button {
+    background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--gray-300);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+
+  .nav button:hover {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+  }
+
+  .slide-counter {
+    color: var(--gray-400);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-weight: 500;
+  }
+
+  /* Footer bar on each slide */
+  .slide-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--sky));
+    z-index: 10;
+  }
+
+  /* Type specimen */
+  .type-specimen {
+    margin-top: 16px;
+  }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .type-label {
+    width: 80px;
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .type-meta {
+    font-size: 11px;
+    color: var(--gray-400);
+    width: 140px;
+    flex-shrink: 0;
+  }
+
+  /* UI preview */
+  .ui-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-preview {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-secondary { background: transparent; border: 1.5px solid var(--gray-200); color: #fff; }
+  .btn-ghost { background: transparent; color: var(--sky); border: none; }
+  .btn-danger { background: var(--error); color: #fff; }
+
+  .badge-preview {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .badge-success { background: rgba(34,197,94,0.15); color: var(--palm); }
+  .badge-warning { background: rgba(234,179,8,0.15); color: var(--warning); }
+  .badge-error { background: rgba(220,38,38,0.15); color: var(--error); }
+  .badge-info { background: rgba(59,130,246,0.15); color: var(--sky); }
+
+  .input-preview {
+    padding: 10px 14px;
+    border: 1.5px solid var(--gray-700);
+    border-radius: 8px;
+    background: var(--navy-dark);
+    color: var(--gray-300);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    width: 220px;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin-top: 16px;
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), var(--sky));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 16px;
+    padding-left: 16px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--navy);
+  }
+
+  .timeline-date {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .timeline-text {
+    font-size: 14px;
+    color: var(--gray-300);
+    margin-top: 2px;
+  }
+
+  /* Messaging cards */
+  .msg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .msg-card {
+    background: var(--navy-light);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .msg-card h4 { margin-bottom: 6px; }
+
+  .msg-card .pain { color: var(--error); font-size: 13px; margin-bottom: 4px; }
+  .msg-card .promise { color: var(--palm); font-size: 13px; margin-bottom: 4px; }
+  .msg-card .cta { color: var(--sky); font-size: 13px; font-weight: 600; }
+
+  /* Slide-specific backgrounds */
+  section:nth-child(odd) { background: var(--navy); }
+  section:nth-child(even) { background: var(--navy-dark); }
+
+  /* Checklist */
+  .checklist li::before { content: '☐'; color: var(--gold); }
+  .checklist li.done::before { content: '☑'; color: var(--palm); }
+
+  /* Small text */
+  .sm { font-size: 13px; }
+  .xs { font-size: 11px; }
+
+  /* Cover special */
+  .cover-slide {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cover-slide h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  .cover-slide .tagline {
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
+
+  .cover-img-wrapper {
+    width: 700px;
+    max-width: 80%;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(245,166,35,0.2);
+  }
+
+  .cover-img-wrapper img {
+    width: 100%;
+    display: block;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 16px 0;
+    border-radius: 2px;
+  }
+
+  .social-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .social-tag {
+    background: rgba(59,130,246,0.1);
+    color: var(--sky);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  @media print {
+    section { page-break-after: always; display: flex !important; }
+    .nav { display: none; }
+    body { overflow: visible; }
+  }
+</style>
+</head>
+<body>
+
+<div class="presentation" id="deck">
+
+<!-- SLIDE 1: Cover -->
+<section class="active cover-slide">
+  <div class="bg-glow top-right"></div>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-pattern"></div>
+  <div class="slide-content" style="align-items:center;">
+    <div class="tag">Brand Identity Playbook</div>
+    <h1>Solar OS <span class="gold">USA</span></h1>
+    <p class="tagline">Stop paying for 6 tools. Start closing in one.</p>
+    <div class="cover-img-wrapper">
+      <img src="images/hero.png" alt="Solar OS Dashboard">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 2: Brand Promise -->
+<section>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col">
+    <div>
+      <div class="subtitle">Core Identity</div>
+      <h2>Brand Promise</h2>
+      <div class="divider"></div>
+
+      <div class="card card-gold" style="margin-top:20px;">
+        <p style="font-size:18px;color:var(--gold);font-weight:600;font-style:italic;">
+          "Everything you need to sell, permit, and monitor solar — in one place, at a fair price."
+        </p>
+      </div>
+
+      <h3 style="margin-top:24px;">Brand Archetype: The Builder</h3>
+      <p>Not the flashy innovator. Not the corporate enterprise. Solar OS is the tool that gets the job done — like a DeWalt drill or a Ford F-150. Trusted, durable, no BS.</p>
+
+      <h3 style="margin-top:24px;">Voice & Tone</h3>
+      <ul>
+        <li><strong>Direct</strong> — Lead with the benefit, skip the fluff</li>
+        <li><strong>Knowledgeable</strong> — We know solar: permits, NEM 3.0, all of it</li>
+        <li><strong>Respectful</strong> — Installers are skilled tradespeople</li>
+        <li><strong>Plainspoken</strong> — "Close more deals" not "optimize pipeline velocity"</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/colors.png" class="slide-img" alt="Brand Colors">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 3: Target Persona -->
+<section>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col">
+    <div>
+      <div class="subtitle">Target Persona</div>
+      <h2>Meet <span class="gold">Jake Martinez</span></h2>
+      <p style="margin-bottom:8px;">Owner, SunPoint Solar LLC — Tampa Bay, FL</p>
+      <div class="divider"></div>
+
+      <div class="stat-grid" style="margin-top:16px;">
+        <div class="stat">
+          <div class="stat-value">34-45</div>
+          <div class="stat-label">Age Range</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">8-15</div>
+          <div class="stat-label">Employees</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">$1.5-4M</div>
+          <div class="stat-label">Annual Revenue</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:20px;">Pain Points</h3>
+      <ul>
+        <li><span class="gold">Tool sprawl:</span> $500-1,000+/mo across 6 platforms</li>
+        <li><span class="gold">Data silos:</span> Customer info in 4 different places</li>
+        <li><span class="gold">Permit hell:</span> Every FL AHJ wants different things</li>
+        <li><span class="gold">Aurora pricing:</span> $170+/user for proposals alone</li>
+      </ul>
+
+      <h3 style="margin-top:16px;">What Jake Values</h3>
+      <ul>
+        <li>Time — anything saving 30 min/day is worth it</li>
+        <li>Simplicity — "Just tell me what to do next"</li>
+        <li>Fairness — hates being nickel-and-dimed</li>
+        <li>Local knowledge — FL permits, FPL, building codes</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/persona.png" class="slide-img" alt="Jake Martinez Persona">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 4: Visual Identity -->
+<section>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="slide-content">
+    <div class="subtitle">Visual System</div>
+    <h2>Color Palette</h2>
+    <p>Bridging two worlds: <strong>Florida tradesman</strong> meets <strong>Silicon Valley SaaS</strong>. Stripe's polish meets Home Depot's approachability.</p>
+    <div class="divider"></div>
+
+    <h3>Primary Colors</h3>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1B2E4A;"></div>
+        <div class="swatch-name">Solar Navy</div>
+        <div class="swatch-hex">#1B2E4A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5A623;"></div>
+        <div class="swatch-name">Sunshine Gold</div>
+        <div class="swatch-hex">#F5A623</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">Secondary Colors</h3>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3B82F6;"></div>
+        <div class="swatch-name">Sky Blue</div>
+        <div class="swatch-hex">#3B82F6</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#22C55E;"></div>
+        <div class="swatch-name">Palm Green</div>
+        <div class="swatch-hex">#22C55E</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#64748B;"></div>
+        <div class="swatch-name">Slate</div>
+        <div class="swatch-hex">#64748B</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">Semantic Colors</h3>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#16A34A;"></div>
+        <div class="swatch-name">Success</div>
+        <div class="swatch-hex">#16A34A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#EAB308;"></div>
+        <div class="swatch-name">Warning</div>
+        <div class="swatch-hex">#EAB308</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#DC2626;"></div>
+        <div class="swatch-name">Error</div>
+        <div class="swatch-hex">#DC2626</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3B82F6;"></div>
+        <div class="swatch-name">Info</div>
+        <div class="swatch-hex">#3B82F6</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 5: Typography -->
+<section>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-pattern"></div>
+  <div class="slide-content">
+    <div class="subtitle">Type System</div>
+    <h2>Typography</h2>
+    <p>Two fonts. Clear hierarchy. Maximum readability.</p>
+    <div class="divider"></div>
+
+    <div class="two-col" style="height:auto;margin-top:20px;">
+      <div>
+        <h3>DM Sans — Headlines</h3>
+        <p class="sm">Marketing headlines, hero text, display. Warm and distinctive personality.</p>
+        <div class="type-specimen">
+          <div class="type-row">
+            <span class="type-label">Display</span>
+            <span style="font-family:'DM Sans';font-weight:700;font-size:42px;color:#fff;line-height:1.1;">Solar OS</span>
+            <span class="type-meta">Bold / 48px</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">H1</span>
+            <span style="font-family:'DM Sans';font-weight:700;font-size:32px;color:#fff;line-height:1.2;">Page Title</span>
+            <span class="type-meta">Bold / 36px</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">H2</span>
+            <span style="font-family:'DM Sans';font-weight:700;font-size:26px;color:#fff;line-height:1.25;">Section Head</span>
+            <span class="type-meta">Bold / 30px</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Inter — UI & Body</h3>
+        <p class="sm">Interface text, body copy, labels. Clean and highly legible at all sizes.</p>
+        <div class="type-specimen">
+          <div class="type-row">
+            <span class="type-label">H3</span>
+            <span style="font-weight:600;font-size:22px;color:#fff;line-height:1.3;">Sub-section</span>
+            <span class="type-meta">Semibold / 24px</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">Body</span>
+            <span style="font-size:16px;color:var(--gray-300);line-height:1.6;">Regular body text for paragraphs</span>
+            <span class="type-meta">Regular / 16px</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">Caption</span>
+            <span style="font-weight:500;font-size:12px;color:var(--gray-400);">METADATA & LABELS</span>
+            <span class="type-meta">Medium / 12px</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">Overline</span>
+            <span style="font-weight:600;font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;">SECTION LABEL</span>
+            <span class="type-meta">Semibold / 12px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <h4>Typography Rules</h4>
+      <ul>
+        <li>Never use more than 2 font families in a single view</li>
+        <li>No text smaller than 12px — ever</li>
+        <li>No thin font weights (300 or below) for body text</li>
+        <li>Monospace (JetBrains Mono) for code, API docs, and system IDs only</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 6: Competitive Positioning -->
+<section>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col-wide">
+    <div>
+      <div class="subtitle">Market Position</div>
+      <h2>Competitive Positioning</h2>
+      <p style="margin-bottom:16px;">For small-to-mid solar installers tired of paying for a stack of disconnected tools.</p>
+      <div class="divider"></div>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Solar OS</th>
+            <th>Aurora</th>
+            <th>OpenSolar</th>
+            <th>Salesforce</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CRM</td>
+            <td class="check">✓ Built-in</td>
+            <td class="cross">✗ Need separate</td>
+            <td class="warn">⚠ Basic</td>
+            <td class="check">✓ Core</td>
+          </tr>
+          <tr>
+            <td>Proposals</td>
+            <td class="check">✓ Included</td>
+            <td class="check">✓ Best-in-class</td>
+            <td class="check">✓ Good</td>
+            <td class="cross">✗ Add-on</td>
+          </tr>
+          <tr>
+            <td>Permitting</td>
+            <td class="check">✓ FL-optimized</td>
+            <td class="cross">✗ Manual</td>
+            <td class="cross">✗ No</td>
+            <td class="cross">✗ No</td>
+          </tr>
+          <tr>
+            <td>Monitoring</td>
+            <td class="check">✓ Integrated</td>
+            <td class="cross">✗ No</td>
+            <td class="cross">✗ No</td>
+            <td class="cross">✗ No</td>
+          </tr>
+          <tr>
+            <td>Price/user/mo</td>
+            <td class="gold" style="font-weight:700;">~$49</td>
+            <td>$170+</td>
+            <td>Free</td>
+            <td>$75+</td>
+          </tr>
+          <tr>
+            <td>Setup Time</td>
+            <td class="check">Hours</td>
+            <td>Days</td>
+            <td>Hours</td>
+            <td class="cross">Weeks+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <img src="images/competitor.png" class="slide-img" alt="Competition Comparison">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 7: Messaging Framework -->
+<section>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-pattern"></div>
+  <div class="slide-content">
+    <div class="subtitle">Communications</div>
+    <h2>Messaging Framework</h2>
+    <div class="card card-gold" style="margin-bottom:20px;">
+      <p style="font-size:20px;font-weight:700;color:var(--gold);text-align:center;">
+        "Stop paying for 6 tools. Start closing in one."
+      </p>
+    </div>
+
+    <div class="msg-grid">
+      <div class="msg-card">
+        <h4>Owner / CEO</h4>
+        <p class="pain">Pain: Too many tools, too much money</p>
+        <p class="promise">Promise: Cut software costs by 60%</p>
+        <p style="font-size:13px;color:var(--gray-300);margin:6px 0;">Proof: Average customer saves $400+/mo</p>
+        <p class="cta">"See what you'd save →"</p>
+      </div>
+      <div class="msg-card">
+        <h4>Sales Rep</h4>
+        <p class="pain">Pain: Tab-switching loses leads</p>
+        <p class="promise">Promise: Lead in, proposal out — one place</p>
+        <p style="font-size:13px;color:var(--gray-300);margin:6px 0;">Proof: Send proposals in under 5 min</p>
+        <p class="cta">"Watch the 2-min demo →"</p>
+      </div>
+      <div class="msg-card">
+        <h4>Ops Manager</h4>
+        <p class="pain">Pain: Permit status in spreadsheets</p>
+        <p class="promise">Promise: One dashboard for everything</p>
+        <p style="font-size:13px;color:var(--gray-300);margin:6px 0;">Proof: Cut permit time 50% with FL templates</p>
+        <p class="cta">"See the ops dashboard →"</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <h3>Secondary Taglines</h3>
+      <div class="swatch-row" style="margin-top:8px;">
+        <div class="card" style="flex:1;text-align:center;padding:14px;">
+          <p style="color:var(--gold);font-weight:600;">"One platform. Every install. No headaches."</p>
+        </div>
+        <div class="card" style="flex:1;text-align:center;padding:14px;">
+          <p style="color:var(--gold);font-weight:600;">"Solar software that works as hard as you do."</p>
+        </div>
+        <div class="card" style="flex:1;text-align:center;padding:14px;">
+          <p style="color:var(--gold);font-weight:600;">"Built for installers. Priced for humans."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 8: UI Components -->
+<section>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col">
+    <div>
+      <div class="subtitle">Design System</div>
+      <h2>UI Components</h2>
+      <div class="divider"></div>
+
+      <h3>Buttons</h3>
+      <div class="ui-row">
+        <button class="btn-preview btn-primary">Get Started</button>
+        <button class="btn-preview btn-secondary">Learn More</button>
+        <button class="btn-preview btn-ghost">View Docs</button>
+        <button class="btn-preview btn-danger">Delete</button>
+      </div>
+
+      <h3 style="margin-top:24px;">Status Badges</h3>
+      <div class="ui-row">
+        <span class="badge-preview badge-success">Active</span>
+        <span class="badge-preview badge-warning">Pending</span>
+        <span class="badge-preview badge-error">Expired</span>
+        <span class="badge-preview badge-info">New Lead</span>
+      </div>
+
+      <h3 style="margin-top:24px;">Form Elements</h3>
+      <div class="ui-row">
+        <input type="text" class="input-preview" placeholder="Customer name..." readonly>
+        <input type="text" class="input-preview" placeholder="Email address..." readonly>
+      </div>
+
+      <h3 style="margin-top:24px;">Card Specs</h3>
+      <div class="card" style="border: 1px solid rgba(245,166,35,0.2);">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <p class="xs" style="color:var(--gold);">STAT CARD</p>
+            <p style="font-size:28px;font-weight:700;color:#fff;">$42,500</p>
+            <p class="xs" style="color:var(--palm);">↑ 12% vs last month</p>
+          </div>
+          <div style="text-align:right;">
+            <p class="xs" style="color:var(--gray-400);">border-radius: 12px</p>
+            <p class="xs" style="color:var(--gray-400);">padding: 24px</p>
+            <p class="xs" style="color:var(--gray-400);">shadow-sm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="images/mobile.png" class="slide-img" alt="Mobile UI">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 9: Social Media -->
+<section>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col">
+    <div>
+      <div class="subtitle">Social Presence</div>
+      <h2>Social Media Strategy</h2>
+      <div class="divider"></div>
+
+      <h3>Primary Channels</h3>
+      <ul>
+        <li><strong>LinkedIn</strong> — B2B authority, case studies, industry insights</li>
+        <li><strong>YouTube</strong> — Tutorials, product demos, installer tips</li>
+        <li><strong>Reddit</strong> — r/solar, r/solarenergy community engagement</li>
+        <li><strong>Instagram</strong> — Job site photos, team culture, before/after</li>
+        <li><strong>Twitter/X</strong> — Industry news, quick tips, engagement</li>
+      </ul>
+
+      <h3 style="margin-top:20px;">Tone on Social</h3>
+      <p>Casual, peer-to-peer. "Who else is tired of copy-pasting between 6 different tabs?"</p>
+
+      <h3 style="margin-top:20px;">Hashtags</h3>
+      <div class="social-tags">
+        <span class="social-tag">#SolarOS</span>
+        <span class="social-tag">#SolarInstaller</span>
+        <span class="social-tag">#SolarCRM</span>
+        <span class="social-tag">#FloridaSolar</span>
+        <span class="social-tag">#SolarTech</span>
+        <span class="social-tag">#CleanEnergy</span>
+        <span class="social-tag">#SolarBusiness</span>
+        <span class="social-tag">#RooftopSolar</span>
+      </div>
+
+      <h3 style="margin-top:20px;">Content Pillars</h3>
+      <ul>
+        <li><strong>Product:</strong> Features, demos, tips & tricks</li>
+        <li><strong>Industry:</strong> Solar news, policy updates, trends</li>
+        <li><strong>Community:</strong> Customer stories, team highlights</li>
+        <li><strong>Education:</strong> How-to guides, best practices</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/community.png" class="slide-img" alt="Solar Community">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 10: Pricing -->
+<section>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="slide-content">
+    <div class="subtitle">Revenue Model</div>
+    <h2>Pricing Strategy</h2>
+    <p>"Honest value, no per-seat gouging" — transparent, fair, significantly cheaper than the current stack.</p>
+    <div class="divider"></div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan-name">Free</div>
+        <div class="price">$0</div>
+        <div class="period">forever</div>
+        <ul>
+          <li>1 user</li>
+          <li>Basic CRM</li>
+          <li>5 proposals/mo</li>
+          <li>Community support</li>
+          <li>Try before you buy</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <div class="tag" style="margin-bottom:8px;">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="price">$49</div>
+        <div class="period">/user/month</div>
+        <ul>
+          <li>Unlimited proposals</li>
+          <li>Full CRM + pipeline</li>
+          <li>FL permit templates</li>
+          <li>Basic monitoring</li>
+          <li>Email support</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div class="plan-name">Business</div>
+        <div class="price">$99</div>
+        <div class="period">/user/month</div>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Advanced reporting</li>
+          <li>API access</li>
+          <li>Custom branding</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="price">Custom</div>
+        <div class="period">contact us</div>
+        <ul>
+          <li>Everything in Business</li>
+          <li>Dedicated CSM</li>
+          <li>Custom integrations</li>
+          <li>SLA guarantee</li>
+          <li>On-site training</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card card-gold" style="margin-top:20px;text-align:center;">
+      <p style="color:var(--gold);font-weight:600;font-size:16px;">Average customer saves <span style="font-size:24px;">$400+/month</span> vs their current tool stack</p>
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 11: Go-to-Market -->
+<section>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col">
+    <div>
+      <div class="subtitle">Growth Strategy</div>
+      <h2>Go-to-Market</h2>
+      <div class="divider"></div>
+
+      <h3>Channel Strategy</h3>
+      <div class="card" style="margin-top:8px;">
+        <h4 class="gold">Reddit — Community First</h4>
+        <p class="sm">r/solar, r/solarenergy — genuine engagement, answer questions, share knowledge. Build trust before selling.</p>
+      </div>
+      <div class="card">
+        <h4 class="sky">YouTube — Demo & Educate</h4>
+        <p class="sm">Product walkthroughs, "Day in the Life" content, permit tutorials. SEO-optimized for solar installer searches.</p>
+      </div>
+      <div class="card">
+        <h4 class="palm">FLASEIA — Industry Network</h4>
+        <p class="sm">Florida Solar Energy Industries Association events, sponsorships, and partnerships. Direct access to FL installers.</p>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--warning);">Referral Program</h4>
+        <p class="sm">Installer-to-installer referrals. Offer free month for both parties. Trust-based growth.</p>
+      </div>
+
+      <h3 style="margin-top:16px;">Key Metrics</h3>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-value" style="font-size:24px;">$49</div>
+          <div class="stat-label">Starting Price</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="font-size:24px;">14 days</div>
+          <div class="stat-label">Free Trial</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="font-size:24px;">< 1 hr</div>
+          <div class="stat-label">Onboarding</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="images/growth.png" class="slide-img" alt="Growth Strategy">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 12: Launch Plan -->
+<section>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="two-col">
+    <div>
+      <div class="subtitle">Execution</div>
+      <h2>Launch Plan</h2>
+      <div class="divider"></div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Week 1-2 — Pre-Launch</div>
+          <div class="timeline-text">Beta testers recruited from FL installer networks. Gather testimonials. Build social proof.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Week 3 — Soft Launch</div>
+          <div class="timeline-text">Invite-only launch to 50 installers. Reddit AMAs. YouTube demo series goes live.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Week 4 — Product Hunt</div>
+          <div class="timeline-text">Product Hunt launch with full social kit. Press outreach to Solar Power World, PV Magazine.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Week 5-6 — Scale</div>
+          <div class="timeline-text">Paid ads (LinkedIn, Google). FLASEIA partnership announced. Referral program activated.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Month 2-3 — Expand</div>
+          <div class="timeline-text">Additional state templates (TX, CA, AZ). Case studies published. Content marketing engine running.</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:20px;">Launch Kit</h3>
+      <ul>
+        <li>Product Hunt listing + assets</li>
+        <li>Social media graphics (20+ templates)</li>
+        <li>Press release + media kit</li>
+        <li>Demo video (2-min + 10-min)</li>
+        <li>Email sequences (onboarding + nurture)</li>
+        <li>Referral program landing page</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/launch.png" class="slide-img" alt="Launch">
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+<!-- SLIDE 13: Next Steps -->
+<section>
+  <div class="bg-glow bottom-left"></div>
+  <div class="bg-glow top-right"></div>
+  <div class="bg-pattern"></div>
+  <div class="slide-content" style="align-items:center;text-align:center;">
+    <div class="subtitle">Action Plan</div>
+    <h2>Next Steps</h2>
+    <div class="divider" style="margin:16px auto;"></div>
+
+    <div class="msg-grid" style="text-align:left;max-width:1100px;">
+      <div class="msg-card" style="border-left-color:var(--error);">
+        <h4 style="color:var(--error);">Immediate (Week 1)</h4>
+        <ul class="checklist">
+          <li>Finalize logo design (Direction B)</li>
+          <li>Set up brand assets library</li>
+          <li>Configure design system in Figma</li>
+          <li>Build landing page with brand identity</li>
+          <li>Set up social media accounts</li>
+        </ul>
+      </div>
+      <div class="msg-card" style="border-left-color:var(--warning);">
+        <h4 style="color:var(--warning);">Short-term (Month 1)</h4>
+        <ul class="checklist">
+          <li>Complete UI component library</li>
+          <li>Create 10 social media templates</li>
+          <li>Write homepage + 3 key pages</li>
+          <li>Produce demo video</li>
+          <li>Build email nurture sequence</li>
+        </ul>
+      </div>
+      <div class="msg-card" style="border-left-color:var(--palm);">
+        <h4 style="color:var(--palm);">Milestones (Quarter 1)</h4>
+        <ul class="checklist">
+          <li>100 beta users onboarded</li>
+          <li>Product Hunt launch complete</li>
+          <li>3 case studies published</li>
+          <li>FLASEIA partnership signed</li>
+          <li>$5K MRR achieved</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card card-gold" style="max-width:700px;margin-top:40px;text-align:center;">
+      <p style="font-size:24px;font-weight:700;color:var(--gold);font-family:'DM Sans',sans-serif;">
+        "The only tool that works as hard as your crew."
+      </p>
+      <p style="margin-top:8px;color:var(--gray-300);">Solar OS USA — Built for installers. Priced for humans.</p>
+    </div>
+  </div>
+  <div class="slide-footer"></div>
+</section>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button onclick="prevSlide()">← Prev</button>
+  <span class="slide-counter"><span id="current">1</span> / <span id="total">13</span></span>
+  <button onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  let current = 0;
+
+  function showSlide(n) {
+    sections[current].classList.remove('active');
+    current = (n + sections.length) % sections.length;
+    sections[current].classList.add('active');
+    document.getElementById('current').textContent = current + 1;
+  }
+
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+    if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+    if (e.key === 'End') { e.preventDefault(); showSlide(sections.length - 1); }
+  });
+
+  document.getElementById('total').textContent = sections.length;
+</script>
+
+</body>
+</html>
